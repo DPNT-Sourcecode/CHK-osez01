@@ -25,22 +25,16 @@ public class CheckoutSolution {
         for (char SKU : skus.toCharArray()) {
             switch (SKU) {
                 case 'A':
-                    boolean mod3 = ((aCount+1) % 3) == 0;
-                    boolean mod5 = ((aCount+1) % 5) == 0;
-
+                    aCount++;
+                    boolean mod3 = ((aCount) % 3) == 0;
+                    boolean mod5 = ((aCount) % 5) == 0;
                     // Either there is a deal and restart counting
-                    if (mod3 & mod5) {
-                        aCount = 0;
-                        a5Deal++;
-                    } else if (mod5) {
-                        aCount = 0;
+                    if (mod5 && mod3) {
+                        a3Deal = 0;
                         a5Deal++;
                     } else if (mod3) {
                         aCount = 0;
                         a3Deal++;
-                    } else {
-                        // Or count Item
-                        aCount++;
                     }
                     break;
                 case 'B':
