@@ -8,9 +8,24 @@ public class CheckoutSolution {
         int bCount = 0;
         int cCount = 0;
         int dCount = 0;
+        // check for legal input
         // parse string
-        // format "A A A B B"
+        // format "AAABB"?
         System.out.print(skus);
+        for(char SKU: skus.toCharArray()) {
+            if(SKU == 'A') {
+               aCount++;
+            }
+            if(SKU == 'B') {
+                bCount++;
+            }
+            if(SKU == 'C') {
+                cCount++;
+            }
+            if(SKU == 'D') {
+                dCount++;
+            }
+        }
         // count each item
         // check for offers
         // sum up
