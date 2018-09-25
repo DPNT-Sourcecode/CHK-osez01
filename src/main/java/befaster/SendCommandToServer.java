@@ -20,7 +20,7 @@ public class SendCommandToServer {
      *
      *   To run your unit tests locally:
      *      ./gradlew test -i
-     *paus
+     *paussd
      * ~~~~~~~~~~ The workflow ~~~~~~~~~~~~~
      *
      *   By running this file you interact with a challenge server.
