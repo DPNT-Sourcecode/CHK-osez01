@@ -13,7 +13,6 @@ public class CHK_R1_Test {
 
     @Before
     public void setUp() {
-
         checkoutSolution = new CheckoutSolution();
     }
 

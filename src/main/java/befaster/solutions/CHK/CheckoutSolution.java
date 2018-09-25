@@ -29,11 +29,11 @@ public class CheckoutSolution {
                     boolean mod3 = ((aCount) % 3) == 0;
                     boolean mod5 = ((aCount) % 5) == 0;
                     // Either there is a deal and restart counting
-                    if (mod5 && mod3) {
+                    if (mod5) {
                         a3Deal = 0;
+                        aCount = 0;
                         a5Deal++;
                     } else if (mod3) {
-                        aCount = 0;
                         a3Deal++;
                     }
                     break;
