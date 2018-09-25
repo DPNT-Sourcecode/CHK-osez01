@@ -10,10 +10,10 @@ public class CheckoutSolution {
         int aCount = 0;
         int a3Deal = 0;
         int a5Deal = 0;
-        int aTotal = 0;
+        int aTotal;
         int bCount = 0;
         int bDeal = 0;
-        int bTotal = 0;
+        int bTotal;
         int cTotal = 0;
         int dTotal = 0;
 
@@ -22,16 +22,14 @@ public class CheckoutSolution {
             return 0;
         }
         // parse string and count each SKU
-        // format "AAABB"?
-        System.out.print(skus);
         for (char SKU : skus.toCharArray()) {
             switch (SKU) {
                 case 'A':
                     // Either there is a deal and restart counting
-                    if ((aCount+1 % 5) == 0) {
+                    if (((aCount+1) % 5) == 0) {
                         aCount = 0;
                         a5Deal++;
-                    } else if ((aCount+1 % 3) == 0) {
+                    } else if (((aCount+1) % 3) == 0) {
                         aCount = 0;
                         a3Deal++;
                     } else {
@@ -61,13 +59,6 @@ public class CheckoutSolution {
         }
         // check for offers
         // Total = item count + deal count
-
-
-
-        if(aCount % 5 == 0) {
-
-        }
-
         aTotal = (50 * aCount) + (a3Deal * 130) + (a5Deal * 200);
         bTotal = (30 * bCount) + (bDeal * 45);
         cTotal = (cTotal * 20);
