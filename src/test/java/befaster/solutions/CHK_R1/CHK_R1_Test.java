@@ -63,6 +63,27 @@ public class CHK_R1_Test {
     }
 
     @Test
+    public void oneE () {
+        assertThat(checkoutSolution.checkout("E"), equalTo(40));
+    }
+
+    @Test
+    public void twoE () {
+        assertThat(checkoutSolution.checkout("EE"), equalTo(80));
+    }
+
+    @Test
+    public void twoEoneB () {
+        assertThat(checkoutSolution.checkout("EEB"), equalTo(110));
+    }
+
+    @Test
+    public void twoEtwoB () {
+        assertThat(checkoutSolution.checkout("EEBB"), equalTo(110));
+    }
+
+
+    @Test
     public void doubleB () {
         assertThat(checkoutSolution.checkout("BB"), equalTo(45));
     }
