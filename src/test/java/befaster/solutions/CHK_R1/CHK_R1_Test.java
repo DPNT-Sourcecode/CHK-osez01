@@ -49,6 +49,16 @@ public class CHK_R1_Test {
     }
 
     @Test
+    public void quintpleA () {
+        assertThat(checkoutSolution.checkout("AAAAA"), equalTo(200));
+    }
+
+    @Test
+    public void sextupleA () {
+        assertThat(checkoutSolution.checkout("AAAAAA"), equalTo(250));
+    }
+
+    @Test
     public void doubleB () {
         assertThat(checkoutSolution.checkout("BB"), equalTo(45));
     }
