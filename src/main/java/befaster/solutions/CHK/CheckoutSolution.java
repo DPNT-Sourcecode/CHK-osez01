@@ -59,7 +59,7 @@ public class CheckoutSolution {
         }
         // check for offers
         // Total = item count + deal count
-        aTotal = (50 * aCount) + (a3Deal * 130) + (a5Deal * 200);
+        aTotal = (50 * aCount) - (a3Deal * 20) - (a5Deal * 50);
         bTotal = (30 * bCount) + (bDeal * 45);
         cTotal = (cTotal * 20);
         dTotal = (dTotal * 15);
