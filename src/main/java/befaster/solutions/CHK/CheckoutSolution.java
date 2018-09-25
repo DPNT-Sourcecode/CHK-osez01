@@ -70,8 +70,11 @@ public class CheckoutSolution {
         bTotal = (30 * bCount) + (bDeal * 45);
         if (eCount > 2 & bCount > 1) {
             int bWithOffer = bCount + (2 * bDeal) - (eCount/2);
-            for(int i = 0; i)
-            bTotal = checkout()
+            String newBs = "";
+            for(int i = 0; i<bWithOffer;i++){
+                newBs +="B";
+            }
+            bTotal = checkout(newBs);
         }
 
         cTotal = (cTotal * 20);
