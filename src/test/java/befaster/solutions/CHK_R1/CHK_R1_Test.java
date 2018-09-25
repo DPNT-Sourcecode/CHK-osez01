@@ -87,6 +87,12 @@ public class CHK_R1_Test {
         assertThat(checkoutSolution.checkout("EEBBB"), equalTo(125));
     }
 
+    @Test
+    public void fourEtwoB () {
+        assertThat(checkoutSolution.checkout("EEEEBB"), equalTo(160));
+    }
+
+
 
     @Test
     public void doubleB () {
