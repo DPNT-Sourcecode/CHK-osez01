@@ -16,6 +16,8 @@ public class CheckoutSolution {
         int bTotal;
         int cTotal = 0;
         int dTotal = 0;
+        int eCount = 0;
+        int eTotal;
 
         // check for legal input
         if (skus.equals("")) {
@@ -52,6 +54,9 @@ public class CheckoutSolution {
                 case 'D':
                     dTotal++;
                     break;
+                case 'E':
+                    eCount++;
+                    break;
                 default:
                     return -1;
             }
@@ -60,10 +65,14 @@ public class CheckoutSolution {
         // check for offers
         // Total = item count + deal count
         aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
+        eTotal = (40 * eCount);
+        if (bCount > 1) {
+            bCount = bCount - (eCount/2);
+        }
         bTotal = (30 * bCount) + (bDeal * 45);
         cTotal = (cTotal * 20);
         dTotal = (dTotal * 15);
         // sum up
-        return aTotal + bTotal + cTotal + dTotal;
+        return aTotal + bTotal + cTotal + dTotal + eTotal;
     }
 }
