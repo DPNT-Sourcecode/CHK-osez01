@@ -42,4 +42,19 @@ public class CHK_R1_Test {
     public void tripleA () {
         assertThat(checkoutSolution.checkout("AAA"), equalTo(130));
     }
+
+    @Test
+    public void quadA () {
+        assertThat(checkoutSolution.checkout("AAAA"), equalTo(180));
+    }
+
+    @Test
+    public void doubleB () {
+        assertThat(checkoutSolution.checkout("BB"), equalTo(45));
+    }
+
+    @Test
+    public void tripleB () {
+        assertThat(checkoutSolution.checkout("BBB"), equalTo(75));
+    }
 }
