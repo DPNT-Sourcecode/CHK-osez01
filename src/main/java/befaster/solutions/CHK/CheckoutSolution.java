@@ -41,11 +41,9 @@ public class CheckoutSolution {
                     }
                     break;
                 case 'B':
-                    if (bCount == 1) {
+                    bCount++;
+                    if ((bCount % 2) == 0) {
                         bDeal++;
-                    } else {
-                        // Or count Item
-                        bCount++;
                     }
                     break;
                 case 'C':
@@ -67,9 +65,9 @@ public class CheckoutSolution {
         aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
         eTotal = (40 * eCount);
 
-        if (eCount > 2 & bCount > 1) {
-//           if()
-        }
+//        if (eCount > 2 & bCount > 1) {
+////           if()
+//        }
 
         bTotal = (30 * bCount) - (bDeal * 15);
         cTotal = (cTotal * 20);
