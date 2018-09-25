@@ -42,7 +42,6 @@ public class CheckoutSolution {
                     break;
                 case 'B':
                     if (bCount == 1) {
-                        bCount = 0;
                         bDeal++;
                     } else {
                         // Or count Item
@@ -67,16 +66,12 @@ public class CheckoutSolution {
         // Total = item count + deal count
         aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
         eTotal = (40 * eCount);
-        bTotal = (30 * bCount) + (bDeal * 45);
+
         if (eCount > 2 & bCount > 1) {
-            int bWithOffer = bCount + (2 * bDeal) - (eCount/2);
-            String newBs = "";
-            for(int i = 0; i<bWithOffer;i++){
-                newBs +="B";
-            }
-            bTotal = checkout(newBs);
+//           if()
         }
 
+        bTotal = (30 * bCount) - (bDeal * 15);
         cTotal = (cTotal * 20);
         dTotal = (dTotal * 15);
         // sum up
