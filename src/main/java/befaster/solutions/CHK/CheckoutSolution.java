@@ -67,7 +67,9 @@ public class CheckoutSolution {
         aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
         eTotal = (40 * eCount);
         if (bCount > 1) {
-            bCount = bCount - (eCount/2);
+            int numOfDeals = eCount/2;
+            bCount = bCount - numOfDeals;
+            bDeal = bDeal - numOfDeals;
         }
         bTotal = (30 * bCount) + (bDeal * 45);
         cTotal = (cTotal * 20);
