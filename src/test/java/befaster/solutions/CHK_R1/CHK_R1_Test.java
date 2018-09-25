@@ -19,8 +19,22 @@ public class CHK_R1_Test {
 
     @Test
     public void validInput() {
-        checkoutSolution.checkout("A");
-        assertThat();
+        assertThat(checkoutSolution.checkout("A"), equalTo(50));
 
+    }
+
+    @Test
+    public void emptyInput() {
+        assertThat(checkoutSolution.checkout(""), equalTo(-1));
+    }
+
+    @Test
+    public void invalidInput() {
+        assertThat(checkoutSolution.checkout("-"), equalTo(-1));
+    }
+
+    @Test
+    public void validThenInvalidInput() {
+        assertThat(checkoutSolution.checkout("ABCx"), equalTo(-1));
     }
 }
