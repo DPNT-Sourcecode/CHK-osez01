@@ -68,6 +68,7 @@ public class CheckoutSolution {
         if (eCount > 1 & bCount > 0 ) {
             if(((bCount % 2) == 0) & bDeal > 0) {
                 bDeal = bDeal - (eCount/2);
+                if(bDeal < 0) {bDeal = 0;}
             }
             bCount = bCount - (eCount/2);
         }
