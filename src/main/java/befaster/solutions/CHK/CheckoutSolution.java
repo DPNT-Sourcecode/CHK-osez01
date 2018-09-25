@@ -15,9 +15,10 @@ public class CheckoutSolution {
         int bTotal = 0;
         int cTotal = 0;
         int dTotal = 0;
+
         // check for legal input
         if (skus.equals("")) {
-            return -1;
+            return 0;
         }
         // parse string and count each SKU
         // format "AAABB"?
@@ -45,8 +46,10 @@ public class CheckoutSolution {
                     break;
                 case 'C':
                     cTotal++;
+                    break;
                 case 'D':
                     dTotal++;
+                    break;
                 default:
                     return -1;
             }

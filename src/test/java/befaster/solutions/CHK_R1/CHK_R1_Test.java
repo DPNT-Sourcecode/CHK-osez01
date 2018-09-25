@@ -25,7 +25,7 @@ public class CHK_R1_Test {
 
     @Test
     public void emptyInput() {
-        assertThat(checkoutSolution.checkout(""), equalTo(-1));
+        assertThat(checkoutSolution.checkout(""), equalTo(0));
     }
 
     @Test
