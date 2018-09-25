@@ -27,7 +27,7 @@ public class CheckoutSolution {
             switch (SKU) {
                 case 'A':
                     // Either there is a deal and restart counting
-                    if (aCount == 3) {
+                    if (aCount == 2) {
                         aCount = 0;
                         aDeal++;
                         System.out.print(aCount);
@@ -38,7 +38,7 @@ public class CheckoutSolution {
                     }
                     break;
                 case 'B':
-                    if (bCount == 3) {
+                    if (bCount == 1) {
                         bCount = 0;
                         bDeal++;
                     } else {
@@ -60,7 +60,7 @@ public class CheckoutSolution {
         // check for offers
         // Total = item count + deal count
         aTotal = (50 * aCount) + (aDeal * 130);
-        bTotal = (30 * bCount) +  (bDeal * 45);
+        bTotal = (30 * bCount) + (bDeal * 45);
         cTotal = (cTotal * 20);
         dTotal = (dTotal * 15);
         // sum up
