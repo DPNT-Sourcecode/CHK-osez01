@@ -66,10 +66,10 @@ public class CheckoutSolution {
         eTotal = (40 * eCount);
 
         if (eCount > 1 & bCount > 0 ) {
-            bCount = bCount - (eCount/2);
             if(((bCount % 2) == 0) & bDeal > 0) {
-                bDeal--;
+                bDeal = bDeal - (eCount/2);
             }
+            bCount = bCount - (eCount/2);
         }
 
         bTotal = (30 * bCount) - (bDeal * 15);
