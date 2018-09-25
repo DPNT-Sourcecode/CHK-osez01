@@ -37,4 +37,9 @@ public class CHK_R1_Test {
     public void validThenInvalidInput() {
         assertThat(checkoutSolution.checkout("ABCx"), equalTo(-1));
     }
+
+    @Test
+    public void tripleA () {
+        assertThat(checkoutSolution.checkout("AAA"), equalTo(130));
+    }
 }

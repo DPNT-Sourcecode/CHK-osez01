@@ -30,6 +30,8 @@ public class CheckoutSolution {
                     if (aCount == 3) {
                         aCount = 0;
                         aDeal++;
+                        System.out.print(aCount);
+                        System.out.print(aDeal);
                     } else {
                         // Or count Item
                         aCount++;
