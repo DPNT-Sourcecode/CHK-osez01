@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import befaster.runner.SolutionNotImplementedException;
+import org.apache.commons.codec.binary.StringUtils;
 
 import java.util.Objects;
 
@@ -66,10 +67,13 @@ public class CheckoutSolution {
         // Total = item count + deal count
         aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
         eTotal = (40 * eCount);
-        if (bCount > 1) {
-
-        }
         bTotal = (30 * bCount) + (bDeal * 45);
+        if (eCount > 2 & bCount > 1) {
+            int bWithOffer = bCount + (2 * bDeal) - (eCount/2);
+            for(int i = 0; i)
+            bTotal = checkout()
+        }
+
         cTotal = (cTotal * 20);
         dTotal = (dTotal * 15);
         // sum up
