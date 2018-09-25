@@ -26,9 +26,11 @@ public class CheckoutSolution {
                 dCount++;
             }
         }
+        System.out.print(aCount);
         // count each item
         // check for offers
         // sum up
-        throw new SolutionNotImplementedException();
+//        throw new SolutionNotImplementedException();
+        return  aCount;
     }
 }
