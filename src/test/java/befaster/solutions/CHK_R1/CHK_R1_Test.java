@@ -74,7 +74,7 @@ public class CHK_R1_Test {
 
     @Test
     public void twoEoneB () {
-        assertThat(checkoutSolution.checkout("EEB"), equalTo(110));
+        assertThat(checkoutSolution.checkout("EEB"), equalTo(80));
     }
 
     @Test
