@@ -1,30 +1,33 @@
 package befaster.solutions.CHK;
 
-import befaster.runner.SolutionNotImplementedException;
-import org.apache.commons.codec.binary.StringUtils;
-
-import java.nio.charset.CharacterCodingException;
 import java.util.HashMap;
-import java.util.Objects;
 
 //Started CHK_R3 at 1158 min
 
 public class CheckoutSolution {
 
-     static int aCount = 0;
-     static int a3Deal = 0;
-     static int a5Deal = 0;
+//     static int aCount = 0;
+//     static int a3Deal = 0;
+//     static int a5Deal = 0;
 
-    private void multipleForDeal(int baseCount, int X, int Y , int dealXCount, int dealYCount) {
-        baseCount++;
-        boolean modX = (baseCount % X) == 0;
-        boolean modY = (baseCount % Y) == 0;
+    class Variable {
+        public int num;
+
+        public Variable(int num) {
+            this.num = num;
+        }
+    }
+
+    private void multipleForDeal(Variable baseCount, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
+        baseCount.num++;
+        boolean modX = (baseCount.num % X.num) == 0;
+        boolean modY = (baseCount.num % Y.num) == 0;
         if (modX) {
-            dealYCount = 0;
-            baseCount = 0;
-            dealXCount++;
+            dealYCount.num = 0;
+            baseCount.num = 0;
+            dealXCount.num++;
         } else if (modY) {
-            dealYCount++;
+            dealYCount.num++;
         }
     }
 
@@ -45,6 +48,10 @@ public class CheckoutSolution {
         noOfferSkus.put('Y', 10);
         noOfferSkus.put('Z', 50);
 
+
+        Variable aCount = new Variable(0);
+        Variable a3Deal = new Variable(0);
+        Variable a5Deal = new Variable(0);
 
         int bCount = 0;
         int bDeal = 0;
@@ -75,7 +82,7 @@ public class CheckoutSolution {
 //                    } else if (mod3) {
 //                        a3Deal++;
 //                    }
-                    multipleForDeal(aCount, 5 ,3, a5Deal, a3Deal);
+                    multipleForDeal(aCount, new Variable(5) ,new Variable(3), a5Deal, a3Deal);
                     break;
                 case 'B':
                     bCount++;
@@ -90,7 +97,7 @@ public class CheckoutSolution {
                     fCount++;
                     break;
                 case 'H':
-                    multipleForDeal(hCount, 10, 5, h10Deal, h5Deal);
+//                    multipleForDeal(hCount, 10, 5, h10Deal, h5Deal);
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -120,7 +127,7 @@ public class CheckoutSolution {
             fTotal = 10 * fCount;
         }
 
-        int aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
+        int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
         int bTotal = (30 * bCount) - (bDeal * 15);
 //        int cTotal = (cCount * 20);
 //        int dTotal = (dCount * 15);
