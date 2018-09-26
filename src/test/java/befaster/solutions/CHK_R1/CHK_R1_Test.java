@@ -149,7 +149,7 @@ public class CHK_R1_Test {
 
     @Test
     public void sixH () {
-        assertThat(checkoutSolution.checkout("HHHHH"), equalTo(55));
+        assertThat(checkoutSolution.checkout("HHHHHH"), equalTo(55));
     }
 
 
