@@ -73,8 +73,12 @@ public class CheckoutSolution {
             bCount = bCount - (eCount/2);
         }
         // F calculations
-        int fTotal = 0;
-        if() 
+        int fTotal;
+        if(fCount > 2) {
+            fTotal = 10 * ((fCount/2) + 1);
+        } else {
+            fTotal = 10 * fCount;
+        }
 
         int aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
         int bTotal = (30 * bCount) - (bDeal * 15);

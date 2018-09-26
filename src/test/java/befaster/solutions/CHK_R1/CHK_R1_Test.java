@@ -119,16 +119,16 @@ public class CHK_R1_Test {
 
     @Test
     public void fourF () {
-        assertThat(checkoutSolution.checkout("FFF"), equalTo(20));
+        assertThat(checkoutSolution.checkout("FFFF"), equalTo(30));
     }
 
     @Test
     public void fiveF () {
-        assertThat(checkoutSolution.checkout("FFFFFFFFF"), equalTo(50));
+        assertThat(checkoutSolution.checkout("FFFFF"), equalTo(30));
     }
 
     @Test
     public void sixF () {
-        assertThat(checkoutSolution.checkout("FFFFFFFFF"), equalTo(50));
+        assertThat(checkoutSolution.checkout("FFFFFF"), equalTo(40));
     }
 }
