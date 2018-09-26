@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import befaster.runner.SolutionNotImplementedException;
 import org.apache.commons.codec.binary.StringUtils;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 //Started CHK_R3 at 1158 min
@@ -10,6 +11,10 @@ import java.util.Objects;
 public class CheckoutSolution {
 
     public Integer checkout(String skus) {
+        HashMap<String, Integer> noOfferSkus = new HashMap<>();
+        noOfferSkus.
+
+
         int aCount = 0;
         int a3Deal = 0;
         int a5Deal = 0;
