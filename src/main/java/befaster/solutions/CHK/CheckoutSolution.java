@@ -11,9 +11,21 @@ import java.util.Objects;
 public class CheckoutSolution {
 
     public Integer checkout(String skus) {
-        HashMap<String, Integer> noOfferSkus = new HashMap<>();
-        noOfferSkus.
-
+        HashMap<Character, Integer> noOfferSkus = new HashMap<>();
+        noOfferSkus.put('C', 20);
+        noOfferSkus.put('D', 15);
+        noOfferSkus.put('G', 20);
+        noOfferSkus.put('I', 35);
+        noOfferSkus.put('J', 60);
+        noOfferSkus.put('L', 90);
+        noOfferSkus.put('M', 15);
+        noOfferSkus.put('O', 10);
+        noOfferSkus.put('S', 30);
+        noOfferSkus.put('T', 20);
+        noOfferSkus.put('W', 20);
+        noOfferSkus.put('X', 90);
+        noOfferSkus.put('Y', 10);
+        noOfferSkus.put('Z', 50);
 
         int aCount = 0;
         int a3Deal = 0;
@@ -67,6 +79,7 @@ public class CheckoutSolution {
                     return -1;
             }
 
+            
         }
         // Total EQUALS item count PLUS MINUS deal count
         // Calculations for Total B price based on amount of E's bought
