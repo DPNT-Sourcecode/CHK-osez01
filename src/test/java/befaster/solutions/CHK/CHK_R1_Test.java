@@ -16,6 +16,12 @@ public class CHK_R1_Test {
         checkoutSolution = new CheckoutSolution();
     }
 
+
+    @Test public void inputs() {
+        assertThat(checkoutSolution.checkout("A"), equalTo(50));
+        assertThat(checkoutSolution.checkout(""), equalTo(-1));
+    }
+
     @Test
     public void validInput() {
         assertThat(checkoutSolution.checkout("A"), equalTo(50));

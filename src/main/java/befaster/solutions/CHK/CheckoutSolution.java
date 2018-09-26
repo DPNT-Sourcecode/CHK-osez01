@@ -64,6 +64,9 @@ public class CheckoutSolution {
         Variable h5Deal = new Variable(0);
         Variable h10Deal = new Variable(0);
 
+        Variable kCount = new Variable(0);
+        Variable kDeal = new Variable(0);
+
 
         int eCount = 0;
         int fCount = 0;
@@ -107,6 +110,8 @@ public class CheckoutSolution {
                 case 'H':
                     multipleForDeal(hCount, new Variable(10),  new Variable(5), h10Deal, h5Deal);
                     break;
+                case 'K':
+                    singleForDeal(kCount, new Variable(2), kDeal);
                 default:
                     if(noOfferSkus.containsKey(SKU)){
                         noOfferTotal =+ noOfferSkus.get(SKU);
@@ -137,12 +142,11 @@ public class CheckoutSolution {
 
         int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
         int bTotal = (30 * bCount.num) - (bDeal.num * 15);
-//        int cTotal = (cCount * 20);
-//        int dTotal = (dCount * 15);
         int eTotal = (40 * eCount);
         int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
+        int kTotal = (80 * kCount.num) - (kDeal.num * 10);
 
         // Return all the totals added up
-        return aTotal + bTotal + eTotal + fTotal + hTotal + noOfferTotal;
+        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + noOfferTotal;
     }
 }
