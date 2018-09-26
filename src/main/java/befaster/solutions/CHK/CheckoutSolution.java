@@ -18,17 +18,22 @@ public class CheckoutSolution {
         }
     }
 
-    private void multipleForDeal(Variable baseCount, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
-        baseCount.num++;
-        boolean modX = (baseCount.num % X.num) == 0;
-        boolean modY = (baseCount.num % Y.num) == 0;
+    private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
+        count.num++;
+        boolean modX = (count.num % X.num) == 0;
+        boolean modY = (count.num % Y.num) == 0;
         if (modX) {
             dealYCount.num = 0;
-            baseCount.num = 0;
+            count.num = 0;
             dealXCount.num++;
         } else if (modY) {
             dealYCount.num++;
         }
+    }
+
+    private void singleForDeal(Variable count, Variable modValue, Variable dealCount) {
+        count.num++;
+        if((count.num % modValue.num) == 0) {dealCount.num++;}
     }
 
     public Integer checkout(String skus) {
@@ -48,16 +53,18 @@ public class CheckoutSolution {
         noOfferSkus.put('Y', 10);
         noOfferSkus.put('Z', 50);
 
-
         Variable aCount = new Variable(0);
         Variable a3Deal = new Variable(0);
         Variable a5Deal = new Variable(0);
+
+        Variable bCount = new Variable(0);
+        Variable bDeal = new Variable(0);
+
         Variable hCount = new Variable(0);
         Variable h5Deal = new Variable(0);
         Variable h10Deal = new Variable(0);
 
-        int bCount = 0;
-        int bDeal = 0;
+
         int eCount = 0;
         int fCount = 0;
 
@@ -85,10 +92,11 @@ public class CheckoutSolution {
                     multipleForDeal(aCount, new Variable(5) ,new Variable(3), a5Deal, a3Deal);
                     break;
                 case 'B':
-                    bCount++;
-                    if ((bCount % 2) == 0) {
-                        bDeal++;
-                    }
+//                    bCount++;
+//                    if ((bCount % 2) == 0) {
+//                        bDeal++;
+//                    }
+                    singleForDeal(bCount, new Variable(2), bDeal);
                     break;
                 case 'E':
                     eCount++;
@@ -112,12 +120,12 @@ public class CheckoutSolution {
         }
         // Total EQUALS item count PLUS MINUS deal count
         // Calculations for Total B price based on amount of E's bought
-        if (eCount > 1 & bCount > 0 ) {
-            if(((bCount % 2) == 0) & bDeal > 0) {
-                bDeal = bDeal - (eCount/2);
-                if(bDeal < 0) {bDeal = 0;}
+        if (eCount > 1 & bCount.num > 0 ) {
+            if(((bCount.num % 2) == 0) & bDeal.num > 0) {
+                bDeal.num = bDeal.num - (eCount/2);
+                if(bDeal.num < 0) {bDeal.num = 0;}
             }
-            bCount = bCount - (eCount/2);
+            bCount.num = bCount.num - (eCount/2);
         }
         // F calculations
         int fTotal;
@@ -128,7 +136,7 @@ public class CheckoutSolution {
         }
 
         int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
-        int bTotal = (30 * bCount) - (bDeal * 15);
+        int bTotal = (30 * bCount.num) - (bDeal.num * 15);
 //        int cTotal = (cCount * 20);
 //        int dTotal = (dCount * 15);
         int eTotal = (40 * eCount);
