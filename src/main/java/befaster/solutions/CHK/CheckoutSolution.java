@@ -11,6 +11,10 @@ import java.util.Objects;
 
 public class CheckoutSolution {
 
+    private int aCount = 0;
+    private int a3Deal = 0;
+    private int a5Deal = 0;
+
     public Integer checkout(String skus) {
         HashMap<Character, Integer> noOfferSkus = new HashMap<>();
         noOfferSkus.put('C', 20);
@@ -28,9 +32,7 @@ public class CheckoutSolution {
         noOfferSkus.put('Y', 10);
         noOfferSkus.put('Z', 50);
 
-        int aCount = 0;
-        int a3Deal = 0;
-        int a5Deal = 0;
+
         int bCount = 0;
         int bDeal = 0;
         int eCount = 0;
@@ -49,17 +51,18 @@ public class CheckoutSolution {
         for (char SKU : skus.toCharArray()) {
             switch (SKU) {
                 case 'A':
-                    aCount++;
-                    boolean mod3 = (aCount % 3) == 0;
-                    boolean mod5 = (aCount % 5) == 0;
-                    // Either there is a deal and restart counting
-                    if (mod5) {
-                        a3Deal = 0;
-                        aCount = 0;
-                        a5Deal++;
-                    } else if (mod3) {
-                        a3Deal++;
-                    }
+//                    aCount++;
+//                    boolean mod3 = (aCount % 3) == 0;
+//                    boolean mod5 = (aCount % 5) == 0;
+//                    // Either there is a deal and restart counting
+//                    if (mod5) {
+//                        a3Deal = 0;
+//                        aCount = 0;
+//                        a5Deal++;
+//                    } else if (mod3) {
+//                        a3Deal++;
+//                    }
+                    multipleForDeal(aCount, 5 ,3, a5Deal, a3Deal);
                     break;
                 case 'B':
                     bCount++;
@@ -74,15 +77,7 @@ public class CheckoutSolution {
                     fCount++;
                     break;
                 case 'H':
-                    hCount++;
-                    mod5 = (hCount % 5) == 0;
-                    boolean mod10 = (hCount % 10) == 0;
-                    if(mod10) {
-                        h5Deal = 0;
-                        hCount = 0;
-                        h10Deal++;
-                    } else
-
+                    multipleForDeal(hCount, 10, 5, h10Deal, h5Deal);
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -122,17 +117,16 @@ public class CheckoutSolution {
         return aTotal + bTotal + eTotal + fTotal + noOfferTotal;
     }
 
-//    function multipleForDeal(int baseCount,  ) {
-//        baseCount++;
-//        boolean modX = (baseCount % 3) == 0;
-//        boolean mod5 = (baseCount % 5) == 0;
-//        // Either there is a deal and restart counting
-//        if (mod5) {
-//            a3Deal = 0;
-//            baseCount = 0;
-//            a5Deal++;
-//        } else if (mod3) {
-//            a3Deal++;
-//        }
-//    }
+    private void multipleForDeal(int baseCount, int X, int Y , int dealXCount, int dealYCount) {
+        baseCount++;
+        boolean modX = (baseCount % X) == 0;
+        boolean modY = (baseCount % Y) == 0;
+        if (modX) {
+            dealYCount = 0;
+            baseCount = 0;
+            dealXCount++;
+        } else if (modY) {
+            dealYCount++;
+        }
+    }
 }
