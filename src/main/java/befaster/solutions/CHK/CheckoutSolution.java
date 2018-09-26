@@ -15,6 +15,19 @@ public class CheckoutSolution {
      static int a3Deal = 0;
      static int a5Deal = 0;
 
+    private void multipleForDeal(int baseCount, int X, int Y , int dealXCount, int dealYCount) {
+        baseCount++;
+        boolean modX = (baseCount % X) == 0;
+        boolean modY = (baseCount % Y) == 0;
+        if (modX) {
+            dealYCount = 0;
+            baseCount = 0;
+            dealXCount++;
+        } else if (modY) {
+            dealYCount++;
+        }
+    }
+
     public Integer checkout(String skus) {
         HashMap<Character, Integer> noOfferSkus = new HashMap<>();
         noOfferSkus.put('C', 20);
@@ -115,18 +128,5 @@ public class CheckoutSolution {
 
         // Return all the totals added up
         return aTotal + bTotal + eTotal + fTotal + noOfferTotal;
-    }
-
-    private void multipleForDeal(int baseCount, int X, int Y , int dealXCount, int dealYCount) {
-        baseCount++;
-        boolean modX = (baseCount % X) == 0;
-        boolean modY = (baseCount % Y) == 0;
-        if (modX) {
-            dealYCount = 0;
-            baseCount = 0;
-            dealXCount++;
-        } else if (modY) {
-            dealYCount++;
-        }
     }
 }
