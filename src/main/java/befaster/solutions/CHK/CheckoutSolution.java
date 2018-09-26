@@ -18,23 +18,6 @@ public class CheckoutSolution {
         }
     }
 
-    private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
-        count.num++;
-        boolean modX = (count.num % X.num) == 0;
-        boolean modY = (count.num % Y.num) == 0;
-        if (modX) {
-            dealYCount.num = 0;
-            count.num = 0;
-            dealXCount.num++;
-        } else if (modY) {
-            dealYCount.num++;
-        }
-    }
-
-    private void singleForDeal(Variable count, Variable modValue, Variable dealCount) {
-        count.num++;
-        if((count.num % modValue.num) == 0) {dealCount.num++;}
-    }
 
     public Integer checkout(String skus) {
         HashMap<Character, Integer> noOfferSkus = new HashMap<>();
@@ -134,7 +117,8 @@ public class CheckoutSolution {
         }
 
         int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
-        int bTotal = (30 * bCount.num) - (bDeal.num * 15);
+        int bTotal = singleForTotal(30, bCount.num, 15, bDeal.num);
+//        (30 * bCount.num) - (bDeal.num * 15);
         int eTotal = (40 * eCount);
         int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
         int kTotal = (80 * kCount.num) - (kDeal.num * 10);
@@ -142,5 +126,27 @@ public class CheckoutSolution {
 
         // Return all the totals added up
         return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + noOfferTotal;
+    }
+
+    private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
+        count.num++;
+        boolean modX = (count.num % X.num) == 0;
+        boolean modY = (count.num % Y.num) == 0;
+        if (modX) {
+            dealYCount.num = 0;
+            count.num = 0;
+            dealXCount.num++;
+        } else if (modY) {
+            dealYCount.num++;
+        }
+    }
+
+    private void singleForDeal(Variable count, Variable modValue, Variable dealCount) {
+        count.num++;
+        if((count.num % modValue.num) == 0) {dealCount.num++;}
+    }
+
+    private Integer singleForTotal(Integer countPrice, Integer countValue, Integer dealPrice, Integer dealValue) {
+        return (countPrice * countValue) - (dealPrice * dealValue);
     }
 }
