@@ -72,12 +72,16 @@ public class CheckoutSolution {
             }
             bCount = bCount - (eCount/2);
         }
+        // F calculations
+        int fTotal = 0;
+        if() 
+
         int aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
         int bTotal = (30 * bCount) - (bDeal * 15);
         int cTotal = (cCount * 20);
         int dTotal = (dCount * 15);
         int eTotal = (40 * eCount);
-        int fTotal = (10 * ((fCount+1)/2));
+
         // Return all the totals added up
         return aTotal + bTotal + cTotal + dTotal + eTotal + fTotal;
     }
