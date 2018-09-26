@@ -112,6 +112,7 @@ public class CheckoutSolution {
                     break;
                 case 'K':
                     singleForDeal(kCount, new Variable(2), kDeal);
+                    break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
                         noOfferTotal =+ noOfferSkus.get(SKU);
