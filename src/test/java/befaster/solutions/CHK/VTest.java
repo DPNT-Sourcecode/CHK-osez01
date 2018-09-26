@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class HTest {
+public class VTest {
     private CheckoutSolution checkoutSolution;
 
     @Before
@@ -15,23 +15,23 @@ public class HTest {
     }
 
     @Test
-    public void oneH () {
-        assertThat(checkoutSolution.checkout("H"), equalTo(10));
+    public void oneV () {
+        assertThat(checkoutSolution.checkout("V"), equalTo(50));
     }
 
     @Test
-    public void five5() {
-        assertThat(checkoutSolution.checkout("HHHHH"), equalTo(45));
+    public void twoV() {
+        assertThat(checkoutSolution.checkout("VV"), equalTo(90));
     }
 
     @Test
-    public void tenH () {
-        assertThat(checkoutSolution.checkout("HHHHHHHHHH"), equalTo(80));
+    public void threeV () {
+        assertThat(checkoutSolution.checkout("VVV"), equalTo(130));
     }
 
     @Test
-    public void sixH () {
-        assertThat(checkoutSolution.checkout("HHHHHH"), equalTo(55));
+    public void sixV () {
+        assertThat(checkoutSolution.checkout("VVVVVV"), equalTo(260));
     }
 
 

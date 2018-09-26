@@ -67,6 +67,10 @@ public class CheckoutSolution {
         Variable kCount = new Variable(0);
         Variable kDeal = new Variable(0);
 
+        Variable vCount = new Variable(0);
+        Variable v2Deal = new Variable(0);
+        Variable v3Deal = new Variable(0);
+
 
         int eCount = 0;
         int fCount = 0;
@@ -81,24 +85,9 @@ public class CheckoutSolution {
         for (char SKU : skus.toCharArray()) {
             switch (SKU) {
                 case 'A':
-//                    aCount++;
-//                    boolean mod3 = (aCount % 3) == 0;
-//                    boolean mod5 = (aCount % 5) == 0;
-//                    // Either there is a deal and restart counting
-//                    if (mod5) {
-//                        a3Deal = 0;
-//                        aCount = 0;
-//                        a5Deal++;
-//                    } else if (mod3) {
-//                        a3Deal++;
-//                    }
                     multipleForDeal(aCount, new Variable(5) ,new Variable(3), a5Deal, a3Deal);
                     break;
                 case 'B':
-//                    bCount++;
-//                    if ((bCount % 2) == 0) {
-//                        bDeal++;
-//                    }
                     singleForDeal(bCount, new Variable(2), bDeal);
                     break;
                 case 'E':
@@ -112,6 +101,9 @@ public class CheckoutSolution {
                     break;
                 case 'K':
                     singleForDeal(kCount, new Variable(2), kDeal);
+                    break;
+                case 'V':
+                    multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -146,8 +138,9 @@ public class CheckoutSolution {
         int eTotal = (40 * eCount);
         int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
         int kTotal = (80 * kCount.num) - (kDeal.num * 10);
+        int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
 
         // Return all the totals added up
-        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + noOfferTotal;
+        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + noOfferTotal;
     }
 }
