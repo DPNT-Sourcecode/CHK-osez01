@@ -54,6 +54,12 @@ public class CheckoutSolution {
         Variable v2Deal = new Variable(0);
         Variable v3Deal = new Variable(0);
 
+        Variable pCount = new Variable(0);
+        Variable pDeal = new Variable(0);
+
+        Variable qCount = new Variable(0);
+        Variable qDeal = new Variable(0);
+
 
         int eCount = 0;
         int fCount = 0;
@@ -89,9 +95,10 @@ public class CheckoutSolution {
                     multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
                     break;
                 case 'P':
-
+                    singleForDeal(pCount, new Variable(5), pDeal);
                     break;
                 case 'Q':
+                    singleForDeal(qCount, new Variable(3), qDeal);
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -127,9 +134,11 @@ public class CheckoutSolution {
         int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
         int kTotal = singleForTotal(80, kCount.num, 10, kDeal.num);
         int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
+        int pTotal = singleForTotal(50, pCount.num, 50, pDeal.num);
+        int qTotal = singleForTotal(30, qCount.num, 10, qDeal.num);
 
         // Return all the totals added up
-        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + noOfferTotal;
+        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + pTotal + qTotal + noOfferTotal;
     }
 
     private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
@@ -150,7 +159,7 @@ public class CheckoutSolution {
         if((count.num % modValue.num) == 0) {dealCount.num++;}
     }
 
-    private Integer singleForTotal(Integer countPrice, Integer countValue, Integer dealPrice, Integer dealValue) {
-        return (countPrice * countValue) - (dealPrice * dealValue);
+    private Integer singleForTotal(Integer countPrice, Integer countValue, Integer dealSaving, Integer dealValue) {
+        return (countPrice * countValue) - (dealSaving * dealValue);
     }
 }
