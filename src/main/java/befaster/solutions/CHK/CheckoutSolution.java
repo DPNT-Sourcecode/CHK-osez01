@@ -77,7 +77,7 @@ public class CheckoutSolution {
         int cTotal = (cCount * 20);
         int dTotal = (dCount * 15);
         int eTotal = (40 * eCount);
-        int fTotal = (10 * (fCount/2));
+        int fTotal = (10 * ((fCount+1)/2));
         // Return all the totals added up
         return aTotal + bTotal + cTotal + dTotal + eTotal + fTotal;
     }

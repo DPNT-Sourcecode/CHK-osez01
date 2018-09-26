@@ -107,14 +107,17 @@ public class CHK_R1_Test {
         assertThat(checkoutSolution.checkout("F"), equalTo(10));
     }
 
+    @Test
     public void twoF () {
         assertThat(checkoutSolution.checkout("FF"), equalTo(10));
     }
 
+    @Test
     public void threeF () {
         assertThat(checkoutSolution.checkout("FFF"), equalTo(20));
     }
 
+    @Test
     public void nineF () {
         assertThat(checkoutSolution.checkout("FFFFFFFFF"), equalTo(50));
     }
