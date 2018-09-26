@@ -131,4 +131,28 @@ public class CHK_R1_Test {
     public void sixF () {
         assertThat(checkoutSolution.checkout("FFFFFF"), equalTo(40));
     }
+
+    @Test
+    public void oneH () {
+        assertThat(checkoutSolution.checkout("H"), equalTo(10));
+    }
+
+    @Test
+    public void five5() {
+        assertThat(checkoutSolution.checkout("HHHHH"), equalTo(45));
+    }
+
+    @Test
+    public void tenH () {
+        assertThat(checkoutSolution.checkout("HHHHHHHHHH"), equalTo(80));
+    }
+
+    @Test
+    public void sixH () {
+        assertThat(checkoutSolution.checkout("HHHHH"), equalTo(55));
+    }
+
+
+
 }
+
