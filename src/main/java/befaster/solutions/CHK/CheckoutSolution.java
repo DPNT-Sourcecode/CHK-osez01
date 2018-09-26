@@ -11,9 +11,9 @@ import java.util.Objects;
 
 public class CheckoutSolution {
 
-    private int aCount = 0;
-    private int a3Deal = 0;
-    private int a5Deal = 0;
+     int aCount = 0;
+     int a3Deal = 0;
+     int a5Deal = 0;
 
     public Integer checkout(String skus) {
         HashMap<Character, Integer> noOfferSkus = new HashMap<>();
