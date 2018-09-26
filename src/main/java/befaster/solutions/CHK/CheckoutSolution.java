@@ -88,6 +88,11 @@ public class CheckoutSolution {
                 case 'V':
                     multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
                     break;
+                case 'P':
+
+                    break;
+                case 'Q':
+                    break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
                         noOfferTotal =+ noOfferSkus.get(SKU);
@@ -118,10 +123,9 @@ public class CheckoutSolution {
 
         int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
         int bTotal = singleForTotal(30, bCount.num, 15, bDeal.num);
-//        (30 * bCount.num) - (bDeal.num * 15);
         int eTotal = (40 * eCount);
         int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
-        int kTotal = (80 * kCount.num) - (kDeal.num * 10);
+        int kTotal = singleForTotal(80, kCount.num, 10, kDeal.num);
         int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
 
         // Return all the totals added up
