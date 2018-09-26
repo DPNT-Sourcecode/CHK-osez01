@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import befaster.runner.SolutionNotImplementedException;
 import org.apache.commons.codec.binary.StringUtils;
 
+import java.nio.charset.CharacterCodingException;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -32,10 +33,13 @@ public class CheckoutSolution {
         int a5Deal = 0;
         int bCount = 0;
         int bDeal = 0;
-        int cCount = 0;
-        int dCount = 0;
         int eCount = 0;
         int fCount = 0;
+        int hCount = 0;
+        int h5Deal = 0;
+        int h10Deal = 0;
+
+        int noOfferTotal = 0;
 
         // Check for empty input
         if (skus.equals("")) {
@@ -46,8 +50,8 @@ public class CheckoutSolution {
             switch (SKU) {
                 case 'A':
                     aCount++;
-                    boolean mod3 = ((aCount) % 3) == 0;
-                    boolean mod5 = ((aCount) % 5) == 0;
+                    boolean mod3 = (aCount % 3) == 0;
+                    boolean mod5 = (aCount % 5) == 0;
                     // Either there is a deal and restart counting
                     if (mod5) {
                         a3Deal = 0;
@@ -63,23 +67,33 @@ public class CheckoutSolution {
                         bDeal++;
                     }
                     break;
-                case 'C':
-                    cCount++;
-                    break;
-                case 'D':
-                    dCount++;
-                    break;
                 case 'E':
                     eCount++;
                     break;
                 case 'F':
                     fCount++;
                     break;
+                case 'H':
+                    hCount++;
+                    mod5 = (hCount % 5) == 0;
+                    boolean mod10 = (hCount % 10) == 0;
+                    if(mod10) {
+                        h5Deal = 0;
+                        hCount = 0;
+                        h10Deal++;
+                    } else
+
+                    break;
                 default:
-                    return -1;
+                    if(noOfferSkus.containsKey(SKU)){
+                        noOfferTotal =+ noOfferSkus.get(SKU);
+                    } else {
+                        return -1;
+                    }
+                    break;
             }
 
-            
+
         }
         // Total EQUALS item count PLUS MINUS deal count
         // Calculations for Total B price based on amount of E's bought
@@ -100,11 +114,25 @@ public class CheckoutSolution {
 
         int aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
         int bTotal = (30 * bCount) - (bDeal * 15);
-        int cTotal = (cCount * 20);
-        int dTotal = (dCount * 15);
+//        int cTotal = (cCount * 20);
+//        int dTotal = (dCount * 15);
         int eTotal = (40 * eCount);
 
         // Return all the totals added up
-        return aTotal + bTotal + cTotal + dTotal + eTotal + fTotal;
+        return aTotal + bTotal + eTotal + fTotal + noOfferTotal;
     }
+
+//    function multipleForDeal(int baseCount,  ) {
+//        baseCount++;
+//        boolean modX = (baseCount % 3) == 0;
+//        boolean mod5 = (baseCount % 5) == 0;
+//        // Either there is a deal and restart counting
+//        if (mod5) {
+//            a3Deal = 0;
+//            baseCount = 0;
+//            a5Deal++;
+//        } else if (mod3) {
+//            a3Deal++;
+//        }
+//    }
 }
