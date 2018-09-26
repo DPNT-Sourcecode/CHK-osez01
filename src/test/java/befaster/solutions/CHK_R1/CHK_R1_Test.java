@@ -92,8 +92,6 @@ public class CHK_R1_Test {
         assertThat(checkoutSolution.checkout("EEEEBB"), equalTo(160));
     }
 
-
-
     @Test
     public void doubleB () {
         assertThat(checkoutSolution.checkout("BB"), equalTo(45));
@@ -102,5 +100,22 @@ public class CHK_R1_Test {
     @Test
     public void tripleB () {
         assertThat(checkoutSolution.checkout("BBB"), equalTo(75));
+    }
+
+    @Test
+    public void oneF () {
+        assertThat(checkoutSolution.checkout("F"), equalTo(10));
+    }
+
+    public void twoF () {
+        assertThat(checkoutSolution.checkout("FF"), equalTo(10));
+    }
+
+    public void threeF () {
+        assertThat(checkoutSolution.checkout("FFF"), equalTo(20));
+    }
+
+    public void nineF () {
+        assertThat(checkoutSolution.checkout("FFFFFFFFF"), equalTo(50));
     }
 }

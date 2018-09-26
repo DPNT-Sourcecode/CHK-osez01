@@ -5,22 +5,22 @@ import org.apache.commons.codec.binary.StringUtils;
 
 import java.util.Objects;
 
+//Started CHK_R3 at 1158 min
+
 public class CheckoutSolution {
 
     public Integer checkout(String skus) {
         int aCount = 0;
         int a3Deal = 0;
         int a5Deal = 0;
-        int aTotal;
         int bCount = 0;
         int bDeal = 0;
-        int bTotal;
-        int cTotal = 0;
-        int dTotal = 0;
+        int cCount = 0;
+        int dCount = 0;
         int eCount = 0;
-        int eTotal;
+        int fCount = 0;
 
-        // check for legal input
+        // Check for empty input
         if (skus.equals("")) {
             return 0;
         }
@@ -47,24 +47,24 @@ public class CheckoutSolution {
                     }
                     break;
                 case 'C':
-                    cTotal++;
+                    cCount++;
                     break;
                 case 'D':
-                    dTotal++;
+                    dCount++;
                     break;
                 case 'E':
                     eCount++;
+                    break;
+                case 'F':
+                    fCount++;
                     break;
                 default:
                     return -1;
             }
 
         }
-        // check for offers
-        // Total = item count + deal count
-        aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
-        eTotal = (40 * eCount);
-
+        // Total EQUALS item count PLUS MINUS deal count
+        // Calculations for Total B price based on amount of E's bought
         if (eCount > 1 & bCount > 0 ) {
             if(((bCount % 2) == 0) & bDeal > 0) {
                 bDeal = bDeal - (eCount/2);
@@ -72,11 +72,13 @@ public class CheckoutSolution {
             }
             bCount = bCount - (eCount/2);
         }
-
-        bTotal = (30 * bCount) - (bDeal * 15);
-        cTotal = (cTotal * 20);
-        dTotal = (dTotal * 15);
-        // sum up
-        return aTotal + bTotal + cTotal + dTotal + eTotal;
+        int aTotal = (50 * aCount) - (a3Deal * 20) + (a5Deal * 200);
+        int bTotal = (30 * bCount) - (bDeal * 15);
+        int cTotal = (cCount * 20);
+        int dTotal = (dCount * 15);
+        int eTotal = (40 * eCount);
+        int fTotal = (10 * (fCount/2));
+        // Return all the totals added up
+        return aTotal + bTotal + cTotal + dTotal + eTotal + fTotal;
     }
 }
