@@ -15,8 +15,12 @@ public class CheckoutSolution {
         private SKU() {
         }
 
-        private void reduce(Integer reduceBy){
+        private void reduceItemCount(Integer reduceBy){
             itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
+        }
+
+        private void reduceDealOneCount(Integer reduceBy){
+            dealOneCount = ((dealOneCount - reduceBy) > 0) ? (dealOneCount - reduceBy) : 0;
         }
     }
 
@@ -111,8 +115,8 @@ public class CheckoutSolution {
 
 
         }
-        getOtherFree(E, 2, B, bDeal);
-        getOtherFree(R, 3, Q, qDeal);
+        getOtherFree(E, 2, B);
+        getOtherFree(R, 3, Q);
         // F calculations
         int fTotal;
         if(fCount > 2) {
@@ -122,7 +126,7 @@ public class CheckoutSolution {
         }
 
         if(N.itemCount > 2) {
-            M.reduce(nDeal.itemCount);
+            M.reduceItemCount(N.dealOneCount);
         }
         //U Calc
         int reduce;
@@ -137,15 +141,15 @@ public class CheckoutSolution {
             uTotal = 40 * uCount;
         }
 
-        int aTotal = (50 * A.itemCount) - (a3Deal.itemCount * 20) + (a5Deal.itemCount * 200);
-        int bTotal = singleForTotal(30, B.itemCount, 15, bDeal.itemCount);
+        int aTotal = (50 * A.itemCount) - (A.dealTwoCount * 20) + (A.dealOneCount * 200);
+        int bTotal = singleForTotal(B,30 ,15);
         int eTotal = (40 * E.itemCount);
         int hTotal = (10 * H.itemCount) - (h5Deal.itemCount * 5) + (h10Deal.itemCount * 80);
-        int kTotal = singleForTotal(80, K.itemCount, 10, kDeal.itemCount);
+        int kTotal = singleForTotal(K, 80, 10);
         int mTotal = (15 * M.itemCount);
         int nTotal = (40 * N.itemCount);
-        int pTotal = singleForTotal(50, P.itemCount, 50, pDeal.itemCount);
-        int qTotal = singleForTotal(30, Q.itemCount, 10, qDeal.itemCount);
+        int pTotal = singleForTotal(P, 50, 50);
+        int qTotal = singleForTotal(Q, 30, 30);
         int rTotal = (50 * R.itemCount);
         int vTotal = (50 * V.itemCount) - (v2Deal.itemCount * 10) + (v3Deal.itemCount * 130);
         // Return all the totals added up
@@ -170,17 +174,17 @@ public class CheckoutSolution {
         if((sku.itemCount % modValue) == 0) {sku.dealOneCount++;}
     }
 
-    private Integer singleForTotal(Integer countPrice, Integer countValue, Integer dealSaving, Integer dealValue) {
-        return (countPrice * countValue) - (dealSaving * dealValue);
+    private Integer singleForTotal(SKU sku, Integer countPrice, Integer dealSaving) {
+        return (countPrice * sku.itemCount) - (dealSaving * sku.dealOneCount);
     }
 
     // Buy A amount of X, get one Y free (which has its own YDeal)
-    private void getOtherFree(SKU xCount, Integer a , SKU yCount, SKU yDeal ){
-        if (xCount.itemCount > 1 & yCount.itemCount > 0 ) {
-            if(((yCount.itemCount % a) == 0) & yDeal.itemCount > 0) {
-                yDeal.reduce(xCount.itemCount /a);
+    private void getOtherFree(SKU sku1, Integer a , SKU sku2 ){
+        if (sku1.itemCount > 1 & sku2.itemCount > 0 ) {
+            if(((sku2.itemCount % a) == 0) & sku2.dealOneCount > 0) {
+                sku2.reduceDealOneCount(sku1.itemCount /a);
             }
-            yCount.reduce(xCount.itemCount /a);
+            sku2.reduceItemCount(sku1.itemCount /a);
         }
     }
 }
