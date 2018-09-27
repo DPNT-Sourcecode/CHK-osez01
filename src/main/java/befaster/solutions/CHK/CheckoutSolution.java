@@ -116,6 +116,7 @@ public class CheckoutSolution {
                     break;
                 case 'R':
                     rCount.num++;
+                    break;
                 case 'V':
                     multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
                     break;
