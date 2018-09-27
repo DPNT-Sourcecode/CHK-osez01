@@ -156,7 +156,7 @@ public class CheckoutSolution {
 
         int uTotal;
         if(uCount > 3) {
-            uTotal = 40 * reduce;
+            uTotal = 40 * (uCount - reduce);
         } else {
             uTotal = 40 * uCount;
         }
