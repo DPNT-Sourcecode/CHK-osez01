@@ -144,14 +144,14 @@ public class CheckoutSolution {
         int aTotal = (50 * A.itemCount) - (A.dealTwoCount * 20) + (A.dealOneCount * 200);
         int bTotal = singleForTotal(B,30 ,15);
         int eTotal = (40 * E.itemCount);
-        int hTotal = (10 * H.itemCount) - (h5Deal.itemCount * 5) + (h10Deal.itemCount * 80);
+        int hTotal = (10 * H.itemCount) - (H.dealTwoCount * 5) + (H.dealOneCount * 80);
         int kTotal = singleForTotal(K, 80, 10);
         int mTotal = (15 * M.itemCount);
         int nTotal = (40 * N.itemCount);
         int pTotal = singleForTotal(P, 50, 50);
-        int qTotal = singleForTotal(Q, 30, 30);
+        int qTotal = singleForTotal(Q, 30, 10);
         int rTotal = (50 * R.itemCount);
-        int vTotal = (50 * V.itemCount) - (v2Deal.itemCount * 10) + (v3Deal.itemCount * 130);
+        int vTotal = (50 * V.itemCount) - (V.dealTwoCount * 10) + (V.dealOneCount * 130);
         // Return all the totals added up
         return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + pTotal + qTotal + rTotal + mTotal + nTotal + uTotal + vTotal + noOfferTotal;
     }
