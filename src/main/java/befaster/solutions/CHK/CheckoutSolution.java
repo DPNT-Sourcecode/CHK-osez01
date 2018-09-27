@@ -31,7 +31,6 @@ public class CheckoutSolution {
         noOfferSkus.put('I', 35);
         noOfferSkus.put('J', 60);
         noOfferSkus.put('L', 90);
-//        noOfferSkus.put('M', 15);
         noOfferSkus.put('O', 10);
         noOfferSkus.put('S', 30);
         noOfferSkus.put('T', 20);
@@ -66,6 +65,8 @@ public class CheckoutSolution {
 
         Variable qCount = new Variable(0);
         Variable qDeal = new Variable(0);
+
+        Variable rCount = new Variable(0);
 
         Variable vCount = new Variable(0);
         Variable v2Deal = new Variable(0);
@@ -113,6 +114,8 @@ public class CheckoutSolution {
                 case 'Q':
                     singleForDeal(qCount, new Variable(3), qDeal);
                     break;
+                case 'R':
+                    rCount.num++;
                 case 'V':
                     multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
                     break;
@@ -127,15 +130,8 @@ public class CheckoutSolution {
 
 
         }
-        // Total EQUALS item count PLUS MINUS deal count
-        // Calculations for Total B price based on amount of E's bought
-//        if (eCount > 1 & bCount.num > 0 ) {
-//            if(((bCount.num % 2) == 0) & bDeal.num > 0) {
-//                bDeal.reduce(eCount/2);
-//            }
-//            bCount.reduce(eCount/2);
-//        }
         getOtherFree(eCount, 2, bCount, bDeal);
+        getOtherFree(rCount, 3, qCount, qDeal);
         // F calculations
         int fTotal;
         if(fCount > 2) {
@@ -157,9 +153,10 @@ public class CheckoutSolution {
         int nTotal = (40 * nCount.num);
         int pTotal = singleForTotal(50, pCount.num, 50, pDeal.num);
         int qTotal = singleForTotal(30, qCount.num, 10, qDeal.num);
+        int rTotal = (50 * rCount.num);
         int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
         // Return all the totals added up
-        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + pTotal + qTotal + mTotal + nTotal + noOfferTotal;
+        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + pTotal + qTotal + rTotal + mTotal + nTotal + noOfferTotal;
     }
 
     private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {

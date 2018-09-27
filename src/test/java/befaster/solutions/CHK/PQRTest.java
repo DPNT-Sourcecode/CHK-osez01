@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class PAndQTest {
+public class PQRTest {
     private CheckoutSolution checkoutSolution;
 
     @Before
@@ -41,11 +41,39 @@ public class PAndQTest {
     }
 
     @Test
-    public void four () {
+    public void fourQ () {
         assertThat(checkoutSolution.checkout("QQQQ"), equalTo(110));
     }
 
+    @Test
+    public void threeR () {
+        assertThat(checkoutSolution.checkout("RRR"), equalTo(150));
+    }
 
+    @Test
+    public void threeRoneQ () {
+        assertThat(checkoutSolution.checkout("RRRQ"), equalTo(150));
+    }
+
+    @Test
+    public void threeRtwoQ () {
+        assertThat(checkoutSolution.checkout("RRRQQ"), equalTo(180));
+    }
+
+    @Test
+    public void sixRoneQ () {
+        assertThat(checkoutSolution.checkout("RRRRRRQ"), equalTo(300));
+    }
+
+    @Test
+    public void sixRtwoQ () {
+        assertThat(checkoutSolution.checkout("RRRRRRQQ"), equalTo(300));
+    }
+
+    @Test
+    public void sixRthreeQ () {
+        assertThat(checkoutSolution.checkout("RRRRRRQQQ"), equalTo(330));
+    }
 
 }
 
