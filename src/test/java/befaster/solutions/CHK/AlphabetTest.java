@@ -14,6 +14,11 @@ public class AlphabetTest {
         checkoutSolution = new CheckoutSolution();
     }
 
+    @Test
+    public void noOffer () {
+        assertThat(checkoutSolution.checkout("CDGIKLMOSTWXYZ"), equalTo(485));
+    }
+
        @Test
     public void single () {
         assertThat(checkoutSolution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), equalTo(965));

@@ -126,7 +126,7 @@ public class CheckoutSolution {
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
-                        noOfferTotal =+ noOfferSkus.get(SKU);
+                        noOfferTotal += noOfferSkus.get(SKU);
                     } else {
                         return -1;
                     }
