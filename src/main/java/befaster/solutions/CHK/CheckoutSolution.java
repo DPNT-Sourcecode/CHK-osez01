@@ -119,11 +119,10 @@ public class CheckoutSolution {
         // Calculations for Total B price based on amount of E's bought
         if (eCount > 1 & bCount.num > 0 ) {
             if(((bCount.num % 2) == 0) & bDeal.num > 0) {
-//                bDeal.num = bDeal.num - (eCount/2);
-//                if(bDeal.num < 0) {bDeal.num = 0;}
                 bDeal.reduce(eCount/2);
             }
-            bCount.num = bCount.num - (eCount/2);
+//            bCount.num = bCount.num - (eCount/2);
+            bCount.reduce(eCount/2);
         }
         // F calculations
         int fTotal;

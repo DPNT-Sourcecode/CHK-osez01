@@ -41,6 +41,11 @@ public class BAndETest {
     }
 
     @Test
+    public void fourEoneB () {
+        assertThat(checkoutSolution.checkout("EEEEB"), equalTo(160));
+    }
+
+    @Test
     public void fourEtwoB () {
         assertThat(checkoutSolution.checkout("EEEEBB"), equalTo(160));
     }
