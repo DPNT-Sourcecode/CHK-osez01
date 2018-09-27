@@ -25,7 +25,30 @@ public class MAndNTest {
         assertThat(checkoutSolution.checkout("N"), equalTo(40));
     }
 
+    @Test
+    public void threeN () {
+        assertThat(checkoutSolution.checkout("NNN"), equalTo(120));
+    }
 
+    @Test
+    public void threeNoneM () {
+        assertThat(checkoutSolution.checkout("NNNM"), equalTo(120));
+    }
+
+    @Test
+    public void threeNtwoM () {
+        assertThat(checkoutSolution.checkout("NNNMM"), equalTo(135));
+    }
+
+    @Test
+    public void sixNoneM () {
+        assertThat(checkoutSolution.checkout("NNNNNN"), equalTo(240));
+    }
+
+    @Test
+    public void sixNtwoM () {
+        assertThat(checkoutSolution.checkout("NNNNNNMM"), equalTo(240));
+    }
 
 }
 
