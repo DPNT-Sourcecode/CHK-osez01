@@ -149,9 +149,14 @@ public class CheckoutSolution {
             mCount.reduce(nDeal.num);
         }
         //U Calc
+        int reduce;
+        if((uCount % 3) == 0) {
+            reduce = (uCount/3) - 1;
+        } else { reduce = uCount/3;}
+
         int uTotal;
-        if(uCount > 2) {
-            uTotal = 40 *(uCount - (uCount/3));
+        if(uCount > 3) {
+            uTotal = 40 * reduce;
         } else {
             uTotal = 40 * uCount;
         }
