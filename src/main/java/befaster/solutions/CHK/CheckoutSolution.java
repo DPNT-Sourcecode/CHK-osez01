@@ -141,7 +141,7 @@ public class CheckoutSolution {
             fTotal = 10 * fCount;
         }
 
-        if(nCount.num > 3) {
+        if(nCount.num > 2) {
             mCount.reduce(nDeal.num);
         }
 
