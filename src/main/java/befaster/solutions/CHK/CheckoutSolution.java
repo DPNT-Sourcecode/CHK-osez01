@@ -75,6 +75,7 @@ public class CheckoutSolution {
 
 
         int fCount = 0;
+        int uCount = 0;
         int noOfferTotal = 0;
 
         // Check for empty input
@@ -117,6 +118,9 @@ public class CheckoutSolution {
                 case 'R':
                     rCount.num++;
                     break;
+                case 'U':
+                    uCount++;
+                    break;
                 case 'V':
                     multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
                     break;
@@ -144,6 +148,13 @@ public class CheckoutSolution {
         if(nCount.num > 2) {
             mCount.reduce(nDeal.num);
         }
+        //U Calc
+        int uTotal;
+        if(uCount > 2) {
+            uTotal = 40 *(uCount - (uCount/3));
+        } else {
+            uTotal = 40 * uCount;
+        }
 
         int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
         int bTotal = singleForTotal(30, bCount.num, 15, bDeal.num);
@@ -157,7 +168,7 @@ public class CheckoutSolution {
         int rTotal = (50 * rCount.num);
         int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
         // Return all the totals added up
-        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + pTotal + qTotal + rTotal + mTotal + nTotal + noOfferTotal;
+        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + pTotal + qTotal + rTotal + mTotal + nTotal + uTotal + vTotal + noOfferTotal;
     }
 
     private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {

@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class FTest {
+public class UTest {
     private CheckoutSolution checkoutSolution;
 
     @Before
@@ -16,33 +16,33 @@ public class FTest {
 
 
     @Test
-    public void oneF () {
-        assertThat(checkoutSolution.checkout("F"), equalTo(10));
+    public void oneU () {
+        assertThat(checkoutSolution.checkout("U"), equalTo(40));
     }
 
     @Test
-    public void twoF () {
-        assertThat(checkoutSolution.checkout("FF"), equalTo(20));
+    public void twoU () {
+        assertThat(checkoutSolution.checkout("UU"), equalTo(80));
     }
 
     @Test
-    public void threeF () {
-        assertThat(checkoutSolution.checkout("FFF"), equalTo(20));
+    public void threeU () {
+        assertThat(checkoutSolution.checkout("UUU"), equalTo(80));
     }
 
     @Test
-    public void fourF () {
-        assertThat(checkoutSolution.checkout("FFFF"), equalTo(30));
+    public void fourU () {
+        assertThat(checkoutSolution.checkout("UUUU"), equalTo(120));
     }
 
     @Test
-    public void fiveF () {
-        assertThat(checkoutSolution.checkout("FFFFF"), equalTo(30));
+    public void fiveU () {
+        assertThat(checkoutSolution.checkout("UUUUU"), equalTo(160));
     }
 
     @Test
-    public void sixF () {
-        assertThat(checkoutSolution.checkout("FFFFFF"), equalTo(40));
+    public void sixU () {
+        assertThat(checkoutSolution.checkout("UUUUUU"), equalTo(160));
     }
 
 }
