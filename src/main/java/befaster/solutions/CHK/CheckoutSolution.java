@@ -47,6 +47,8 @@ public class CheckoutSolution {
         Variable bCount = new Variable(0);
         Variable bDeal = new Variable(0);
 
+        Variable eCount = new Variable(0);
+
         Variable hCount = new Variable(0);
         Variable h5Deal = new Variable(0);
         Variable h10Deal = new Variable(0);
@@ -70,7 +72,7 @@ public class CheckoutSolution {
         Variable v3Deal = new Variable(0);
 
 
-        int eCount = 0;
+
         int fCount = 0;
         int noOfferTotal = 0;
 
@@ -88,7 +90,7 @@ public class CheckoutSolution {
                     singleForDeal(bCount, new Variable(2), bDeal);
                     break;
                 case 'E':
-                    eCount++;
+                    eCount.num++;
                     break;
                 case 'F':
                     fCount++;
@@ -127,12 +129,13 @@ public class CheckoutSolution {
         }
         // Total EQUALS item count PLUS MINUS deal count
         // Calculations for Total B price based on amount of E's bought
-        if (eCount > 1 & bCount.num > 0 ) {
-            if(((bCount.num % 2) == 0) & bDeal.num > 0) {
-                bDeal.reduce(eCount/2);
-            }
-            bCount.reduce(eCount/2);
-        }
+//        if (eCount > 1 & bCount.num > 0 ) {
+//            if(((bCount.num % 2) == 0) & bDeal.num > 0) {
+//                bDeal.reduce(eCount/2);
+//            }
+//            bCount.reduce(eCount/2);
+//        }
+        getOtherFree(eCount, 2, bCount, bDeal);
         // F calculations
         int fTotal;
         if(fCount > 2) {
@@ -147,7 +150,7 @@ public class CheckoutSolution {
 
         int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
         int bTotal = singleForTotal(30, bCount.num, 15, bDeal.num);
-        int eTotal = (40 * eCount);
+        int eTotal = (40 * eCount.num);
         int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
         int kTotal = singleForTotal(80, kCount.num, 10, kDeal.num);
         int mTotal = (15 * mCount.num);
@@ -179,5 +182,15 @@ public class CheckoutSolution {
 
     private Integer singleForTotal(Integer countPrice, Integer countValue, Integer dealSaving, Integer dealValue) {
         return (countPrice * countValue) - (dealSaving * dealValue);
+    }
+
+    // Buy A amount of X, get one Y free (which has its own YDeal)
+    private void getOtherFree(Variable xCount, Integer a , Variable yCount, Variable yDeal ){
+        if (xCount.num > 1 & yCount.num > 0 ) {
+            if(((yCount.num % a) == 0) & yDeal.num > 0) {
+                yDeal.reduce(xCount.num/a);
+            }
+            yCount.reduce(xCount.num/a);
+        }
     }
 }
