@@ -11,9 +11,20 @@ public class CheckoutSolution {
         private int itemCount;
         private int dealOneCount;
         private int dealTwoCount;
+        private int itemValue;
+        private int dealOneValue;
+        private int dealTwoValue;
 
         private SKU() {
         }
+
+        private SKU (int itemValue, int dealOneValue, int dealTwoValue) {
+            this.itemValue = itemValue;
+            this.dealOneValue = dealOneValue;
+            this.dealTwoValue = dealTwoValue;
+        }
+
+
 
         private void reduceItemCount(Integer reduceBy){
             itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
@@ -21,6 +32,10 @@ public class CheckoutSolution {
 
         private void reduceDealOneCount(Integer reduceBy){
             dealOneCount = ((dealOneCount - reduceBy) > 0) ? (dealOneCount - reduceBy) : 0;
+        }
+
+        private Integer total(){
+            return (itemValue * itemCount) - (dealTwoCount * dealTwoValue) + (dealOneCount * dealOneValue);
         }
     }
 
@@ -41,7 +56,7 @@ public class CheckoutSolution {
         noOfferSkus.put('Y', 10);
         noOfferSkus.put('Z', 50);
 
-        SKU A = new SKU();
+        SKU A = new SKU(50,200,20);
         SKU B = new SKU();
         SKU E = new SKU();
         SKU H = new SKU();
@@ -141,7 +156,8 @@ public class CheckoutSolution {
             uTotal = 40 * uCount;
         }
 
-        int aTotal = (50 * A.itemCount) - (A.dealTwoCount * 20) + (A.dealOneCount * 200);
+//        int aTotal = (50 * A.itemCount) - (A.dealTwoCount * 20) + (A.dealOneCount * 200);
+        int aTotal = A.total();
         int bTotal = singleForTotal(B,30 ,15);
         int eTotal = (40 * E.itemCount);
         int hTotal = (10 * H.itemCount) - (H.dealTwoCount * 5) + (H.dealOneCount * 80);
