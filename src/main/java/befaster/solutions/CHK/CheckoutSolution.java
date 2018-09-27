@@ -31,7 +31,7 @@ public class CheckoutSolution {
         noOfferSkus.put('I', 35);
         noOfferSkus.put('J', 60);
         noOfferSkus.put('L', 90);
-        noOfferSkus.put('M', 15);
+//        noOfferSkus.put('M', 15);
         noOfferSkus.put('O', 10);
         noOfferSkus.put('S', 30);
         noOfferSkus.put('T', 20);
@@ -54,9 +54,10 @@ public class CheckoutSolution {
         Variable kCount = new Variable(0);
         Variable kDeal = new Variable(0);
 
-        Variable vCount = new Variable(0);
-        Variable v2Deal = new Variable(0);
-        Variable v3Deal = new Variable(0);
+        Variable mCount = new Variable(0);
+
+        Variable nCount = new Variable(0);
+        Variable nDeal = new Variable(0);
 
         Variable pCount = new Variable(0);
         Variable pDeal = new Variable(0);
@@ -64,10 +65,13 @@ public class CheckoutSolution {
         Variable qCount = new Variable(0);
         Variable qDeal = new Variable(0);
 
+        Variable vCount = new Variable(0);
+        Variable v2Deal = new Variable(0);
+        Variable v3Deal = new Variable(0);
+
 
         int eCount = 0;
         int fCount = 0;
-
         int noOfferTotal = 0;
 
         // Check for empty input
@@ -95,14 +99,20 @@ public class CheckoutSolution {
                 case 'K':
                     singleForDeal(kCount, new Variable(2), kDeal);
                     break;
-                case 'V':
-                    multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
+                case 'M':
+                    mCount.num++;
+                    break;
+                case 'N':
+                    singleForDeal(nCount, new Variable(3), nDeal);
                     break;
                 case 'P':
                     singleForDeal(pCount, new Variable(5), pDeal);
                     break;
                 case 'Q':
                     singleForDeal(qCount, new Variable(3), qDeal);
+                    break;
+                case 'V':
+                    multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -121,7 +131,6 @@ public class CheckoutSolution {
             if(((bCount.num % 2) == 0) & bDeal.num > 0) {
                 bDeal.reduce(eCount/2);
             }
-//            bCount.num = bCount.num - (eCount/2);
             bCount.reduce(eCount/2);
         }
         // F calculations
@@ -132,17 +141,22 @@ public class CheckoutSolution {
             fTotal = 10 * fCount;
         }
 
+        if(nCount.num > 3) {
+            mCount.reduce(nDeal.num);
+        }
+
         int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
         int bTotal = singleForTotal(30, bCount.num, 15, bDeal.num);
         int eTotal = (40 * eCount);
         int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
         int kTotal = singleForTotal(80, kCount.num, 10, kDeal.num);
-        int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
+        int mTotal = (15 * mCount.num);
+        int nTotal = (40 * nCount.num);
         int pTotal = singleForTotal(50, pCount.num, 50, pDeal.num);
         int qTotal = singleForTotal(30, qCount.num, 10, qDeal.num);
-
+        int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
         // Return all the totals added up
-        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + pTotal + qTotal + noOfferTotal;
+        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + vTotal + pTotal + qTotal + mTotal + nTotal + noOfferTotal;
     }
 
     private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
