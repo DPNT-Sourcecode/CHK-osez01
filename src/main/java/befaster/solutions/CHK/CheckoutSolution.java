@@ -15,7 +15,8 @@ public class CheckoutSolution {
         private int dealOneValue;
         private int dealTwoValue;
 
-        private SKU() {
+        private SKU(int itemValue) {
+            this.itemValue = itemValue;
         }
 
         private SKU (int itemValue, int dealOneValue, int dealTwoValue) {
@@ -34,8 +35,16 @@ public class CheckoutSolution {
             dealOneCount = ((dealOneCount - reduceBy) > 0) ? (dealOneCount - reduceBy) : 0;
         }
 
-        private Integer total(){
+        private Integer total() {
+            return itemCount * itemValue;
+        }
+
+        private Integer dealTotal(){
             return (itemValue * itemCount) - (dealTwoCount * dealTwoValue) + (dealOneCount * dealOneValue);
+        }
+
+        private Integer singleForTotal() {
+            return (itemValue * itemCount) - (dealOneValue * dealOneCount);
         }
     }
 
@@ -57,16 +66,16 @@ public class CheckoutSolution {
         noOfferSkus.put('Z', 50);
 
         SKU A = new SKU(50,200,20);
-        SKU B = new SKU();
-        SKU E = new SKU();
-        SKU H = new SKU();
-        SKU K = new SKU();
-        SKU M = new SKU();
-        SKU N = new SKU();
-        SKU P = new SKU();
-        SKU Q = new SKU();
-        SKU R = new SKU();
-        SKU V = new SKU();
+        SKU B = new SKU(30);
+        SKU E = new SKU(40);
+        SKU H = new SKU(10,80,5);
+        SKU K = new SKU(80);
+        SKU M = new SKU(15);
+        SKU N = new SKU(40);
+        SKU P = new SKU(50);
+        SKU Q = new SKU(30);
+        SKU R = new SKU(50);
+        SKU V = new SKU(50, 130,10);
 
 
         int fCount = 0;
@@ -155,21 +164,12 @@ public class CheckoutSolution {
         } else {
             uTotal = 40 * uCount;
         }
-
-//        int aTotal = (50 * A.itemCount) - (A.dealTwoCount * 20) + (A.dealOneCount * 200);
-        int aTotal = A.total();
-        int bTotal = singleForTotal(B,30 ,15);
-        int eTotal = (40 * E.itemCount);
-        int hTotal = (10 * H.itemCount) - (H.dealTwoCount * 5) + (H.dealOneCount * 80);
-        int kTotal = singleForTotal(K, 80, 10);
-        int mTotal = (15 * M.itemCount);
-        int nTotal = (40 * N.itemCount);
-        int pTotal = singleForTotal(P, 50, 50);
-        int qTotal = singleForTotal(Q, 30, 10);
-        int rTotal = (50 * R.itemCount);
-        int vTotal = (50 * V.itemCount) - (V.dealTwoCount * 10) + (V.dealOneCount * 130);
+        
         // Return all the totals added up
-        return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + pTotal + qTotal + rTotal + mTotal + nTotal + uTotal + vTotal + noOfferTotal;
+        return A.dealTotal() + B.singleForTotal()
+                + E.total() + fTotal + H.total()
+                + K.singleForTotal() + P.singleForTotal() + Q.singleForTotal() + R.total()
+                + M.total() + N.total() + uTotal + V.dealTotal() + noOfferTotal;
     }
 
     private void multipleForDeal(SKU sku, Integer X, Integer Y) {
