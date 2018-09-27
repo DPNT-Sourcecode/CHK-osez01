@@ -6,19 +6,20 @@ import java.util.HashMap;
 
 public class CheckoutSolution {
 
-//     static int aCount = 0;
-//     static int a3Deal = 0;
-//     static int a5Deal = 0;
 
-    class Variable {
-        public int num;
+    private class SKU {
+        private int itemCount;
+        private int dealOneCount;
+        private int dealTwoCount;
 
-        public Variable(int num) {
-            this.num = num;
+        private SKU(int itemCount, int dealOneCount, int dealTwoCount) {
+            this.itemCount = itemCount;
+            this.dealOneCount = dealOneCount;
+            this.dealTwoCount = dealTwoCount;
         }
 
-        public void reduce(Integer reduceBy){
-            num = ((num - reduceBy) > 0) ? (num - reduceBy) : 0;
+        private void reduce(Integer reduceBy){
+            itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
         }
     }
 
@@ -39,38 +40,36 @@ public class CheckoutSolution {
         noOfferSkus.put('Y', 10);
         noOfferSkus.put('Z', 50);
 
-        Variable aCount = new Variable(0);
-        Variable a3Deal = new Variable(0);
-        Variable a5Deal = new Variable(0);
+        SKU A = new SKU(0 , 0 ,0);
 
-        Variable bCount = new Variable(0);
-        Variable bDeal = new Variable(0);
+        SKU bCount = new SKU(0 , 0, 0);
+        SKU bDeal = new SKU(0);
 
-        Variable eCount = new Variable(0);
+        SKU eCount = new SKU(0);
 
-        Variable hCount = new Variable(0);
-        Variable h5Deal = new Variable(0);
-        Variable h10Deal = new Variable(0);
+        SKU hCount = new SKU(0);
+        SKU h5Deal = new SKU(0);
+        SKU h10Deal = new SKU(0);
 
-        Variable kCount = new Variable(0);
-        Variable kDeal = new Variable(0);
+        SKU kCount = new SKU(0);
+        SKU kDeal = new SKU(0);
 
-        Variable mCount = new Variable(0);
+        SKU mCount = new SKU(0);
 
-        Variable nCount = new Variable(0);
-        Variable nDeal = new Variable(0);
+        SKU nCount = new SKU(0);
+        SKU nDeal = new SKU(0);
 
-        Variable pCount = new Variable(0);
-        Variable pDeal = new Variable(0);
+        SKU pCount = new SKU(0);
+        SKU pDeal = new SKU(0);
 
-        Variable qCount = new Variable(0);
-        Variable qDeal = new Variable(0);
+        SKU qCount = new SKU(0);
+        SKU qDeal = new SKU(0);
 
-        Variable rCount = new Variable(0);
+        SKU rCount = new SKU(0);
 
-        Variable vCount = new Variable(0);
-        Variable v2Deal = new Variable(0);
-        Variable v3Deal = new Variable(0);
+        SKU vCount = new SKU(0);
+        SKU v2Deal = new SKU(0);
+        SKU v3Deal = new SKU(0);
 
 
 
@@ -86,43 +85,43 @@ public class CheckoutSolution {
         for (char SKU : skus.toCharArray()) {
             switch (SKU) {
                 case 'A':
-                    multipleForDeal(aCount, new Variable(5) ,new Variable(3), a5Deal, a3Deal);
+                    multipleForDeal(A, new SKU(5) ,new SKU(3), a5Deal, a3Deal);
                     break;
                 case 'B':
-                    singleForDeal(bCount, new Variable(2), bDeal);
+                    singleForDeal(bCount, new SKU(2), bDeal);
                     break;
                 case 'E':
-                    eCount.num++;
+                    eCount.itemCount++;
                     break;
                 case 'F':
                     fCount++;
                     break;
                 case 'H':
-                    multipleForDeal(hCount, new Variable(10),  new Variable(5), h10Deal, h5Deal);
+                    multipleForDeal(hCount, new SKU(10),  new SKU(5), h10Deal, h5Deal);
                     break;
                 case 'K':
-                    singleForDeal(kCount, new Variable(2), kDeal);
+                    singleForDeal(kCount, new SKU(2), kDeal);
                     break;
                 case 'M':
-                    mCount.num++;
+                    mCount.itemCount++;
                     break;
                 case 'N':
-                    singleForDeal(nCount, new Variable(3), nDeal);
+                    singleForDeal(nCount, new SKU(3), nDeal);
                     break;
                 case 'P':
-                    singleForDeal(pCount, new Variable(5), pDeal);
+                    singleForDeal(pCount, new SKU(5), pDeal);
                     break;
                 case 'Q':
-                    singleForDeal(qCount, new Variable(3), qDeal);
+                    singleForDeal(qCount, new SKU(3), qDeal);
                     break;
                 case 'R':
-                    rCount.num++;
+                    rCount.itemCount++;
                     break;
                 case 'U':
                     uCount++;
                     break;
                 case 'V':
-                    multipleForDeal(vCount, new Variable(3), new Variable(2), v3Deal, v2Deal);
+                    multipleForDeal(vCount, new SKU(3), new SKU(2), v3Deal, v2Deal);
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -145,8 +144,8 @@ public class CheckoutSolution {
             fTotal = 10 * fCount;
         }
 
-        if(nCount.num > 2) {
-            mCount.reduce(nDeal.num);
+        if(nCount.itemCount > 2) {
+            mCount.reduce(nDeal.itemCount);
         }
         //U Calc
         int reduce;
@@ -161,37 +160,37 @@ public class CheckoutSolution {
             uTotal = 40 * uCount;
         }
 
-        int aTotal = (50 * aCount.num) - (a3Deal.num * 20) + (a5Deal.num * 200);
-        int bTotal = singleForTotal(30, bCount.num, 15, bDeal.num);
-        int eTotal = (40 * eCount.num);
-        int hTotal = (10 * hCount.num) - (h5Deal.num * 5) + (h10Deal.num * 80);
-        int kTotal = singleForTotal(80, kCount.num, 10, kDeal.num);
-        int mTotal = (15 * mCount.num);
-        int nTotal = (40 * nCount.num);
-        int pTotal = singleForTotal(50, pCount.num, 50, pDeal.num);
-        int qTotal = singleForTotal(30, qCount.num, 10, qDeal.num);
-        int rTotal = (50 * rCount.num);
-        int vTotal = (50 * vCount.num) - (v2Deal.num * 10) + (v3Deal.num * 130);
+        int aTotal = (50 * A.itemCount) - (a3Deal.itemCount * 20) + (a5Deal.itemCount * 200);
+        int bTotal = singleForTotal(30, bCount.itemCount, 15, bDeal.itemCount);
+        int eTotal = (40 * eCount.itemCount);
+        int hTotal = (10 * hCount.itemCount) - (h5Deal.itemCount * 5) + (h10Deal.itemCount * 80);
+        int kTotal = singleForTotal(80, kCount.itemCount, 10, kDeal.itemCount);
+        int mTotal = (15 * mCount.itemCount);
+        int nTotal = (40 * nCount.itemCount);
+        int pTotal = singleForTotal(50, pCount.itemCount, 50, pDeal.itemCount);
+        int qTotal = singleForTotal(30, qCount.itemCount, 10, qDeal.itemCount);
+        int rTotal = (50 * rCount.itemCount);
+        int vTotal = (50 * vCount.itemCount) - (v2Deal.itemCount * 10) + (v3Deal.itemCount * 130);
         // Return all the totals added up
         return aTotal + bTotal + eTotal + fTotal + hTotal + kTotal + pTotal + qTotal + rTotal + mTotal + nTotal + uTotal + vTotal + noOfferTotal;
     }
 
-    private void multipleForDeal(Variable count, Variable X, Variable Y , Variable dealXCount, Variable dealYCount) {
-        count.num++;
-        boolean modX = (count.num % X.num) == 0;
-        boolean modY = (count.num % Y.num) == 0;
+    private void multipleForDeal(SKU count, SKU X, SKU Y , SKU dealXCount, SKU dealYCount) {
+        count.itemCount++;
+        boolean modX = (count.itemCount % X.itemCount) == 0;
+        boolean modY = (count.itemCount % Y.itemCount) == 0;
         if (modX) {
-            dealYCount.num = 0;
-            count.num = 0;
-            dealXCount.num++;
+            dealYCount.itemCount = 0;
+            count.itemCount = 0;
+            dealXCount.itemCount++;
         } else if (modY) {
-            dealYCount.num++;
+            dealYCount.itemCount++;
         }
     }
 
-    private void singleForDeal(Variable count, Variable modValue, Variable dealCount) {
-        count.num++;
-        if((count.num % modValue.num) == 0) {dealCount.num++;}
+    private void singleForDeal(SKU count, SKU modValue, SKU dealCount) {
+        count.itemCount++;
+        if((count.itemCount % modValue.itemCount) == 0) {dealCount.itemCount++;}
     }
 
     private Integer singleForTotal(Integer countPrice, Integer countValue, Integer dealSaving, Integer dealValue) {
@@ -199,12 +198,12 @@ public class CheckoutSolution {
     }
 
     // Buy A amount of X, get one Y free (which has its own YDeal)
-    private void getOtherFree(Variable xCount, Integer a , Variable yCount, Variable yDeal ){
-        if (xCount.num > 1 & yCount.num > 0 ) {
-            if(((yCount.num % a) == 0) & yDeal.num > 0) {
-                yDeal.reduce(xCount.num/a);
+    private void getOtherFree(SKU xCount, Integer a , SKU yCount, SKU yDeal ){
+        if (xCount.itemCount > 1 & yCount.itemCount > 0 ) {
+            if(((yCount.itemCount % a) == 0) & yDeal.itemCount > 0) {
+                yDeal.reduce(xCount.itemCount /a);
             }
-            yCount.reduce(xCount.num/a);
+            yCount.reduce(xCount.itemCount /a);
         }
     }
 }
