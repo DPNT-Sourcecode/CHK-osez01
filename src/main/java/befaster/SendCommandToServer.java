@@ -19,7 +19,7 @@ public class SendCommandToServer {
      *      ./gradlew run
      *
      *   To run your unit tests locally:
-     *      ./gradlew test -i
+     *      ./gradlew test -ipaus
      *paussd
      * ~~~~~~~~~~ The workflow ~~~~~~~~~~~~~
      *

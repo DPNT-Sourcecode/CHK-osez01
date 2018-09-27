@@ -167,12 +167,12 @@ public class CheckoutSolution {
 
 //        int aTotal = A.dealTotal();
         int bTotal = singleForTotal(B,30 ,15);
-        int htotal = singleForTotal(H, 10 ,5);
+//        int hTotal = singleForTotal(H, 10 ,5);
         int kTotal = singleForTotal(K, 80, 10);
         int pTotal = singleForTotal(P, 50, 50);
         int qTotal = singleForTotal(Q, 30, 10);
         // Return all the totals added up
-        return A.dealTotal() + bTotal + E.total() + fTotal + htotal + kTotal + pTotal + qTotal + R.total() + M.total() + N.total() + uTotal + V.dealTotal() + noOfferTotal;
+        return A.dealTotal() + bTotal + E.total() + fTotal + H.dealTotal() + kTotal + pTotal + qTotal + R.total() + M.total() + N.total() + uTotal + V.dealTotal() + noOfferTotal;
     }
 
     private void multipleForDeal(SKU sku, Integer X, Integer Y) {
