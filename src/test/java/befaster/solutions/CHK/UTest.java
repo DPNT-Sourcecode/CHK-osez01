@@ -27,7 +27,7 @@ public class UTest {
 
     @Test
     public void threeU () {
-        assertThat(checkoutSolution.checkout("UUU"), equalTo(80));
+        assertThat(checkoutSolution.checkout("UUU"), equalTo(120));
     }
 
     @Test
@@ -42,7 +42,12 @@ public class UTest {
 
     @Test
     public void sixU () {
-        assertThat(checkoutSolution.checkout("UUUUUU"), equalTo(160));
+        assertThat(checkoutSolution.checkout("UUUUUU"), equalTo(200));
+    }
+
+    @Test
+    public void sevenU () {
+        assertThat(checkoutSolution.checkout("UUUUUUU"), equalTo(200));
     }
 
 }
