@@ -210,9 +210,7 @@ public class CheckoutSolution {
         return A.dealTotal() + B.singleForTotal() + E.basicTotal() + fTotal + H.dealTotal()
                 + K.singleForTotal() +  + M.basicTotal() +  N.basicTotal() + P.singleForTotal()
                 + Q.singleForTotal() + R.basicTotal()
-//                + S.singleForTotal() + T.singleForTotal()
                 + uTotal + V.dealTotal()
-//                +X.singleForTotal() + Y.singleForTotal() + Z.singleForTotal()
                 + noOfferTotal + buy3DealTotal;
     }
 
@@ -266,13 +264,5 @@ public class CheckoutSolution {
         }
 
         return total;
-
-//        Integer arraySize = (itemsBought.size()) > 3 ? 3 : itemsBought.size();
-//
-//
-//        if(totalItemsBought > 2 ){
-//
-////            for(int i=0; i < arraySize;i++) itemsBought.get(i).dealOneCount = ;
-//        }
     }
 }
