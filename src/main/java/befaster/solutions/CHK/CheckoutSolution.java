@@ -15,21 +15,21 @@ public class CheckoutSolution {
         private int itemCount;
         private int dealOneCount;
         private int dealTwoCount;
-        private int itemValue;
+        private int itemPrice;
         private int dealOneValue;
         private int dealTwoValue;
 
-        private SKU(int itemValue) {
-            this.itemValue = itemValue;
+        private SKU(int itemPrice) {
+            this.itemPrice = itemPrice;
         }
 
-        private SKU (int itemValue, int dealOneValue) {
-            this.itemValue = itemValue;
+        private SKU (int itemPrice, int dealOneValue) {
+            this.itemPrice = itemPrice;
             this.dealOneValue = dealOneValue;
         }
 
-        private SKU (int itemValue, int dealOneValue, int dealTwoValue) {
-            this.itemValue = itemValue;
+        private SKU (int itemPrice, int dealOneValue, int dealTwoValue) {
+            this.itemPrice = itemPrice;
             this.dealOneValue = dealOneValue;
             this.dealTwoValue = dealTwoValue;
         }
@@ -37,6 +37,10 @@ public class CheckoutSolution {
        private Integer getItemCount() {
             return itemCount;
        }
+
+        private Integer getItemPrice() {
+            return itemPrice;
+        }
 
         private void reduceItemCount(Integer reduceBy){
             itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
@@ -47,15 +51,15 @@ public class CheckoutSolution {
         }
 
         private Integer basicTotal() {
-            return itemCount * itemValue;
+            return itemCount * itemPrice;
         }
 
         private Integer dealTotal(){
-            return (itemValue * itemCount) - (dealTwoCount * dealTwoValue) + (dealOneCount * dealOneValue);
+            return (itemPrice * itemCount) - (dealTwoCount * dealTwoValue) + (dealOneCount * dealOneValue);
         }
 
         private Integer singleForTotal() {
-            return (itemValue * itemCount) - (dealOneValue * dealOneCount);
+            return (itemPrice * itemCount) - (dealOneValue * dealOneCount);
         }
     }
 
@@ -249,6 +253,7 @@ public class CheckoutSolution {
         List<SKU> skus = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
         skus.sort(Comparator.comparing(SKU::getItemCount));
         if(skus.size() > 2 ){
+            skus.sort(Comparator.comparing(SKU::getItemCount));
             for(int i=0; i < 3;i++) skus.get(i).dealOneCount = skus.get(0).itemCount;
         }
     }
