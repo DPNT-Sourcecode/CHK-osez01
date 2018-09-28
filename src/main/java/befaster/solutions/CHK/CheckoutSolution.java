@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //Started CHK_R3 at 1158 min
 
@@ -225,6 +226,6 @@ public class CheckoutSolution {
     }
 
     private void calculateTotal (ArrayList list) {
-        
+        Object collect = list.stream().filter(sku. -> sku > 3).collect(Collectors.toList());
     }
 }
