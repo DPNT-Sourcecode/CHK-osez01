@@ -34,9 +34,9 @@ public class CheckoutSolution {
             this.dealTwoValue = dealTwoValue;
         }
 
-        Comparator<SKU> comparator = (SKU a, SKU b ) -> {
-
-        };
+       private Integer getItemCount() {
+            return itemCount;
+       }
 
         private void reduceItemCount(Integer reduceBy){
             itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
@@ -247,6 +247,7 @@ public class CheckoutSolution {
 
     private void calculateTotal (ArrayList<SKU> list) {
         List<SKU> skus = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
+        skus.sort(Comparator.comparing(SKU::getItemCount));
         if(skus.size() > 2 ){
             for(int i=0; i < 3;i++) skus.get(i).dealOneCount = skus.get(0).itemCount;
         }
