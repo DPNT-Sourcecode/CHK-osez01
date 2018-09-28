@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import java.util.HashMap;
+import java.util.List;
 
 //Started CHK_R3 at 1158 min
 
@@ -76,6 +77,9 @@ public class CheckoutSolution {
         SKU Q = new SKU(30);
         SKU R = new SKU(50);
         SKU V = new SKU(50, 130,10);
+
+        List<SKU> buy3List = new List<SKU>() {
+        }
 
 
         int fCount = 0;
