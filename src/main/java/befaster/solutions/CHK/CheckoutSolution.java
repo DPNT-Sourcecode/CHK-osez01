@@ -136,11 +136,26 @@ public class CheckoutSolution {
                 case 'R':
                     R.itemCount++;
                     break;
+                case 'S':
+                    S.itemCount++;
+                    break;
+                case 'T':
+                    T.itemCount++;
+                    break;
                 case 'U':
                     uCount++;
                     break;
                 case 'V':
                     multipleForDeal(V, 3, 2);
+                    break;
+                case 'X':
+                    Z.itemCount++;
+                    break;
+                case 'Y':
+                    Y.itemCount++;
+                    break;
+                case 'Z':
+                    X.itemCount++;
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -180,7 +195,7 @@ public class CheckoutSolution {
             uTotal = 40 * uCount;
         }
 
-        calculateTotal(buy3List);
+//        calculateTotal(buy3List);
         for (SKU s : buy3List) {
             s.singleForTotal();
         }
