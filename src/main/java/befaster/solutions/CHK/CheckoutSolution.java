@@ -243,9 +243,9 @@ public class CheckoutSolution {
 
     private void calculateTotal (ArrayList<SKU> list) {
         List<SKU> itemsBought = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
-        Integer totalItemsBought  = itemsBought.stream().map(s -> s.itemCount).sum
+        Integer totalItemsBought  = itemsBought.stream().mapToInt(SKU::getItemCount).sum();
         itemsBought.sort(Comparator.comparing(SKU::getItemCount));
-        if(itemsBought.size() > 2 ){
+        if(totalItemsBought > 2 ){
             itemsBought.sort(Comparator.comparing(SKU::getItemPrice).reversed());
             for(int i=0; i < 3;i++) itemsBought.get(i).dealOneCount = itemsBought.get(0).itemCount;
         }
