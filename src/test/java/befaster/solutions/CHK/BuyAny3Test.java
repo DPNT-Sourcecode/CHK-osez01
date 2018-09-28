@@ -35,6 +35,18 @@ public class BuyAny3Test {
         assertThat(checkoutSolution.checkout("XXYYZZ"), equalTo(90));
     }
 
+    @Test
+    public void SSS () {
+        assertThat(checkoutSolution.checkout("SSS"), equalTo(45;
+    }
+    @Test
+    public void SSSZ () {
+        assertThat(checkoutSolution.checkout("SSSZ"), equalTo(65));
+    }
+    @Test
+    public void ZZZ () {
+        assertThat(checkoutSolution.checkout("ZZZ"), equalTo(45));
+    }
 
 }
 

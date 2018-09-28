@@ -205,11 +205,7 @@ public class CheckoutSolution {
 
         calculateTotal(buy3List);
 
-//        int aTotal = A.dealTotal();
-//        int bTotal = singleForTotal(B,30 ,15);
-//        int kTotal = singleForTotal(K, 80, 10);
-//        int pTotal = singleForTotal(P, 50, 50);
-//        int qTotal = singleForTotal(Q, 30, 10);
+
         // Return all the totals added up
         return A.dealTotal() + B.singleForTotal() + E.basicTotal() + fTotal + H.dealTotal()
                 + K.singleForTotal() +  + M.basicTotal() +  N.basicTotal() + P.singleForTotal()
@@ -233,10 +229,6 @@ public class CheckoutSolution {
     private void singleForDeal(SKU sku, Integer modValue) {
         sku.itemCount++;
         if((sku.itemCount % modValue) == 0) {sku.dealOneCount++;}
-    }
-
-    private Integer singleForTotal(SKU sku, Integer countPrice, Integer dealSaving) {
-        return (countPrice * sku.itemCount) - (dealSaving * sku.dealOneCount);
     }
 
     // Buy A amount of X, get one Y free (which has its own YDeal)
