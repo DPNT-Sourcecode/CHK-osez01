@@ -242,12 +242,9 @@ public class CheckoutSolution {
     }
 
     private void calculateTotal (ArrayList<SKU> list) {
-        List<SKU> skus = list.stream().filter(s -> s.itemCount > 0).sorted(sku.it).collect(Collectors.toList());
+        List<SKU> skus = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
         if(skus.size() > 2 ){
-            Integer newDealCount = skus.get(0).itemCount;
-            for(SKU s : skus) {
-                s.dealOneCount = newDealCount;
-            }
+            for(int i=0; i < 3;i++) skus.get(i).dealOneCount = skus.get(0).itemCount;
         }
     }
 }
