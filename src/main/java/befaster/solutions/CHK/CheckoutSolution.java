@@ -242,11 +242,12 @@ public class CheckoutSolution {
     }
 
     private void calculateTotal (ArrayList<SKU> list) {
-        List<SKU> skus = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
-        skus.sort(Comparator.comparing(SKU::getItemCount));
-        if(skus.size() > 2 ){
-            skus.sort(Comparator.comparing(SKU::getItemPrice).reversed());
-            for(int i=0; i < 3;i++) skus.get(i).dealOneCount = skus.get(0).itemCount;
+        List<SKU> itemsBought = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
+        Integer totalItemsBought  = itemsBought.stream().map(s -> s.itemCount).sum
+        itemsBought.sort(Comparator.comparing(SKU::getItemCount));
+        if(itemsBought.size() > 2 ){
+            itemsBought.sort(Comparator.comparing(SKU::getItemPrice).reversed());
+            for(int i=0; i < 3;i++) itemsBought.get(i).dealOneCount = itemsBought.get(0).itemCount;
         }
     }
 }
