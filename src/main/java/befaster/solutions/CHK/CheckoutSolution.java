@@ -228,6 +228,6 @@ public class CheckoutSolution {
     }
 
     private void calculateTotal (ArrayList list) {
-        ArrayList<SKU> skus = list.stream().map(m -> m.);
+        ArrayList<SKU> skus = list.stream().map(a -> a.g);
     }
 }
