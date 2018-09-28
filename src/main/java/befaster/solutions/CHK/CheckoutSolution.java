@@ -79,7 +79,7 @@ public class CheckoutSolution {
         SKU B = new SKU(30, 15);
         SKU E = new SKU(40);
         SKU H = new SKU(10,80,5);
-        SKU K = new SKU(80,10);
+        SKU K = new SKU(70,20);
         SKU M = new SKU(15);
         SKU N = new SKU(40);
         SKU P = new SKU(50,50);

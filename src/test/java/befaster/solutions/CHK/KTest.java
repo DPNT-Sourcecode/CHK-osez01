@@ -16,22 +16,22 @@ public class KTest {
 
     @Test
     public void oneK () {
-        assertThat(checkoutSolution.checkout("K"), equalTo(80));
+        assertThat(checkoutSolution.checkout("K"), equalTo(70));
     }
 
     @Test
     public void twoK() {
-        assertThat(checkoutSolution.checkout("KK"), equalTo(150));
+        assertThat(checkoutSolution.checkout("KK"), equalTo(120));
     }
 
     @Test
     public void threeK () {
-        assertThat(checkoutSolution.checkout("KKK"), equalTo(230));
+        assertThat(checkoutSolution.checkout("KKK"), equalTo(190));
     }
 
     @Test
     public void sixK () {
-        assertThat(checkoutSolution.checkout("KKKKKK"), equalTo(450));
+        assertThat(checkoutSolution.checkout("KKKKKK"), equalTo(269));
     }
 
 
