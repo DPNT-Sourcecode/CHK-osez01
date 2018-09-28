@@ -68,14 +68,14 @@ public class CheckoutSolution {
         noOfferSkus.put('W', 20);
 
         SKU A = new SKU(50,200,20);
-        SKU B = new SKU(30);
+        SKU B = new SKU(30, 15);
         SKU E = new SKU(40);
         SKU H = new SKU(10,80,5);
-        SKU K = new SKU(80);
+        SKU K = new SKU(80,10);
         SKU M = new SKU(15);
         SKU N = new SKU(40);
-        SKU P = new SKU(50);
-        SKU Q = new SKU(30);
+        SKU P = new SKU(50,50);
+        SKU Q = new SKU(30 ,10);
         SKU R = new SKU(50);
         SKU S = new SKU(20,5);
         SKU T = new SKU(20,5);
@@ -201,15 +201,15 @@ public class CheckoutSolution {
         }
 
 //        int aTotal = A.dealTotal();
-        int bTotal = singleForTotal(B,30 ,15);
-//        int hTotal = singleForTotal(H, 10 ,5);
-        int kTotal = singleForTotal(K, 80, 10);
-        int pTotal = singleForTotal(P, 50, 50);
-        int qTotal = singleForTotal(Q, 30, 10);
+//        int bTotal = singleForTotal(B,30 ,15);
+//        int kTotal = singleForTotal(K, 80, 10);
+//        int pTotal = singleForTotal(P, 50, 50);
+//        int qTotal = singleForTotal(Q, 30, 10);
         // Return all the totals added up
-        return A.dealTotal() + bTotal + E.basicTotal() + fTotal + H.dealTotal()
-                + kTotal + pTotal + qTotal + R.basicTotal() + M.basicTotal() +
-                N.basicTotal() + uTotal + V.dealTotal() + noOfferTotal;
+        return A.dealTotal() + B.singleForTotal() + E.basicTotal() + fTotal + H.dealTotal()
+                + K.singleForTotal() +  + M.basicTotal() +  N.basicTotal() + P.singleForTotal()
+                + Q.singleForTotal() + R.basicTotal() + S.singleForTotal() + T.singleForTotal()
+                + uTotal + V.dealTotal() +X.singleForTotal() + Y.singleForTotal() + Z.singleForTotal() + noOfferTotal;
     }
 
     private void multipleForDeal(SKU sku, Integer X, Integer Y) {

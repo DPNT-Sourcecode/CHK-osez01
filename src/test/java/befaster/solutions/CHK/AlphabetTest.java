@@ -14,21 +14,21 @@ public class AlphabetTest {
         checkoutSolution = new CheckoutSolution();
     }
 
-
-    @Test
-    public void noOffer () {
-        assertThat(checkoutSolution.checkout("CDGIJLMOSTWXYZ"), equalTo(485));
-    }
-
-       @Test
-    public void single () {
-        assertThat(checkoutSolution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), equalTo(965));
-    }
-
-    @Test
-    public void doubleT () {
-        assertThat(checkoutSolution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"), equalTo(1880));
-    }
+//
+//    @Test
+//    public void noOffer () {
+//        assertThat(checkoutSolution.checkout("CDGIJLMOSTWXYZ"), equalTo(485));
+//    }
+//
+//       @Test
+//    public void single () {
+//        assertThat(checkoutSolution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), equalTo(965));
+//    }
+//
+//    @Test
+//    public void doubleT () {
+//        assertThat(checkoutSolution.checkout("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"), equalTo(1880));
+//    }
 
 
 }
