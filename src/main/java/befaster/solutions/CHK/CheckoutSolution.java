@@ -16,22 +16,22 @@ public class CheckoutSolution {
         private int dealOneCount;
         private int dealTwoCount;
         private int itemPrice;
-        private int dealOneValue;
-        private int dealTwoValue;
+        private int dealOnePrice;
+        private int dealTwoPrice;
 
         private SKU(int itemPrice) {
             this.itemPrice = itemPrice;
         }
 
-        private SKU (int itemPrice, int dealOneValue) {
+        private SKU (int itemPrice, int dealOnePrice) {
             this.itemPrice = itemPrice;
-            this.dealOneValue = dealOneValue;
+            this.dealOnePrice = dealOnePrice;
         }
 
-        private SKU (int itemPrice, int dealOneValue, int dealTwoValue) {
+        private SKU (int itemPrice, int dealOnePrice, int dealTwoPrice) {
             this.itemPrice = itemPrice;
-            this.dealOneValue = dealOneValue;
-            this.dealTwoValue = dealTwoValue;
+            this.dealOnePrice = dealOnePrice;
+            this.dealTwoPrice = dealTwoPrice;
         }
 
        private Integer getItemCount() {
@@ -55,11 +55,11 @@ public class CheckoutSolution {
         }
 
         private Integer dealTotal(){
-            return (itemPrice * itemCount) - (dealTwoCount * dealTwoValue) + (dealOneCount * dealOneValue);
+            return (itemPrice * itemCount) - (dealTwoCount * dealTwoPrice) + (dealOneCount * dealOnePrice);
         }
 
         private Integer singleForTotal() {
-            return (itemPrice * itemCount) - (dealOneValue * dealOneCount);
+            return (itemPrice * itemCount) - (dealOnePrice * dealOneCount);
         }
     }
 
@@ -203,14 +203,17 @@ public class CheckoutSolution {
             uTotal = 40 * uCount;
         }
 
-        calculateTotal(buy3List);
+        Integer buy3DealTotal = calculateTotal(buy3List);
 
 
         // Return all the totals added up
         return A.dealTotal() + B.singleForTotal() + E.basicTotal() + fTotal + H.dealTotal()
                 + K.singleForTotal() +  + M.basicTotal() +  N.basicTotal() + P.singleForTotal()
-                + Q.singleForTotal() + R.basicTotal() + S.singleForTotal() + T.singleForTotal()
-                + uTotal + V.dealTotal() +X.singleForTotal() + Y.singleForTotal() + Z.singleForTotal() + noOfferTotal;
+                + Q.singleForTotal() + R.basicTotal()
+//                + S.singleForTotal() + T.singleForTotal()
+                + uTotal + V.dealTotal()
+//                +X.singleForTotal() + Y.singleForTotal() + Z.singleForTotal()
+                + noOfferTotal + buy3DealTotal;
     }
 
     private void multipleForDeal(SKU sku, Integer X, Integer Y) {
@@ -241,17 +244,35 @@ public class CheckoutSolution {
         }
     }
 
-    private void calculateTotal (ArrayList<SKU> list) {
+    private Integer calculateTotal (ArrayList<SKU> list) {
         List<SKU> itemsBought = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
-        Integer totalItemsBought  = itemsBought.stream().mapToInt(SKU::getItemCount).sum();
-//        itemsBought.sort(Comparator.comparing(SKU::getItemCount));
+
         itemsBought.sort(Comparator.comparing(SKU::getItemPrice).reversed());
-        Integer arraySize = (itemsBought.size()) > 3 ? 3 : itemsBought.size();
-        Integer dealCount = ((totalItemsBought/3)*3);
 
-        if(totalItemsBought > 2 ){
+        Integer totalItemsBought  = itemsBought.stream().mapToInt(SKU::getItemCount).sum();
+        Integer dealCount = ((totalItemsBought/3));
+        Integer numberOfItemsOnDeal = dealCount * 3;
+        Integer total = 0;
+        for(SKU sku : itemsBought) { //For each sku
+            for(int i = 0; i < sku.itemCount; i++){ // For each item
+                if(numberOfItemsOnDeal > 0) {
+                    total += (sku.itemPrice - sku.dealOnePrice);
+                    numberOfItemsOnDeal--;
+                } else {
+                    total += sku.itemPrice;
+                }
+            }
 
-//            for(int i=0; i < arraySize;i++) itemsBought.get(i).dealOneCount = ;
         }
+
+        return total;
+
+//        Integer arraySize = (itemsBought.size()) > 3 ? 3 : itemsBought.size();
+//
+//
+//        if(totalItemsBought > 2 ){
+//
+////            for(int i=0; i < arraySize;i++) itemsBought.get(i).dealOneCount = ;
+//        }
     }
 }
