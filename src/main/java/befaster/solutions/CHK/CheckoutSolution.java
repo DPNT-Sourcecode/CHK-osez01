@@ -33,7 +33,9 @@ public class CheckoutSolution {
             this.dealTwoValue = dealTwoValue;
         }
 
-
+        private Integer getItemCount() {
+            return itemCount;
+        }
 
         private void reduceItemCount(Integer reduceBy){
             itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
@@ -226,6 +228,6 @@ public class CheckoutSolution {
     }
 
     private void calculateTotal (ArrayList list) {
-        Object collect = list.stream().filter(sku. -> sku > 3).collect(Collectors.toList());
+        Object collect = list.stream().map(SKU a -> a.getItemCount());
     }
 }
