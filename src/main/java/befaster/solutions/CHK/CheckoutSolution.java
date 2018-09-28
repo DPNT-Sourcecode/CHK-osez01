@@ -195,10 +195,7 @@ public class CheckoutSolution {
             uTotal = 40 * uCount;
         }
 
-//        calculateTotal(buy3List);
-        for (SKU s : buy3List) {
-            s.singleForTotal();
-        }
+        calculateTotal(buy3List);
 
 //        int aTotal = A.dealTotal();
 //        int bTotal = singleForTotal(B,30 ,15);
@@ -245,7 +242,7 @@ public class CheckoutSolution {
     }
 
     private void calculateTotal (ArrayList<SKU> list) {
-        List<SKU> skus = list.stream().filter(s -> s.itemCount > 1).sorted().collect(Collectors.toList());
+        List<SKU> skus = list.stream().filter(s -> s.itemCount > 0).sorted().collect(Collectors.toList());
         if(skus.size() > 2 ){
             Integer newDealCount = skus.get(0).itemCount;
             for(SKU s : skus) {
