@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,6 +34,9 @@ public class CheckoutSolution {
             this.dealTwoValue = dealTwoValue;
         }
 
+        Comparator<SKU> comparator = (SKU a, SKU b ) -> {
+
+        };
 
         private void reduceItemCount(Integer reduceBy){
             itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
