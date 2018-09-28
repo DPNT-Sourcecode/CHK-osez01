@@ -33,9 +33,6 @@ public class CheckoutSolution {
             this.dealTwoValue = dealTwoValue;
         }
 
-        private Integer getItemCount() {
-            return itemCount;
-        }
 
         private void reduceItemCount(Integer reduceBy){
             itemCount = ((itemCount - reduceBy) > 0) ? (itemCount - reduceBy) : 0;
@@ -45,7 +42,7 @@ public class CheckoutSolution {
             dealOneCount = ((dealOneCount - reduceBy) > 0) ? (dealOneCount - reduceBy) : 0;
         }
 
-        private Integer total() {
+        private Integer basicTotal() {
             return itemCount * itemValue;
         }
 
@@ -87,7 +84,7 @@ public class CheckoutSolution {
         SKU Y = new SKU(20 ,5);
         SKU Z = new SKU( 21, 6);
 
-        List<SKU> buy3List = new ArrayList<>();
+        ArrayList<SKU> buy3List = new ArrayList<>();
         buy3List.add(S);
         buy3List.add(T);
         buy3List.add(X);
@@ -184,6 +181,9 @@ public class CheckoutSolution {
         }
 
         calculateTotal(buy3List);
+        for (SKU s : buy3List) {
+            s.singleForTotal();
+        }
 
 //        int aTotal = A.dealTotal();
         int bTotal = singleForTotal(B,30 ,15);
@@ -192,7 +192,9 @@ public class CheckoutSolution {
         int pTotal = singleForTotal(P, 50, 50);
         int qTotal = singleForTotal(Q, 30, 10);
         // Return all the totals added up
-        return A.dealTotal() + bTotal + E.total() + fTotal + H.dealTotal() + kTotal + pTotal + qTotal + R.total() + M.total() + N.total() + uTotal + V.dealTotal() + noOfferTotal;
+        return A.dealTotal() + bTotal + E.basicTotal() + fTotal + H.dealTotal()
+                + kTotal + pTotal + qTotal + R.basicTotal() + M.basicTotal() +
+                N.basicTotal() + uTotal + V.dealTotal() + noOfferTotal;
     }
 
     private void multipleForDeal(SKU sku, Integer X, Integer Y) {
@@ -227,7 +229,13 @@ public class CheckoutSolution {
         }
     }
 
-    private void calculateTotal (ArrayList list) {
-        ArrayList<SKU> skus = list.stream().map(a -> a.g);
+    private void calculateTotal (ArrayList<SKU> list) {
+        List<SKU> skus = list.stream().filter(s -> s.itemCount > 1).sorted().collect(Collectors.toList());
+        if(skus.size() > 2 ){
+            Integer newDealCount = skus.get(0).itemCount;
+            for(SKU s : skus) {
+                s.dealOneCount = newDealCount;
+            }
+        }
     }
 }
