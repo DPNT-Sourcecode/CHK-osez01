@@ -1,5 +1,6 @@
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,6 +19,11 @@ public class CheckoutSolution {
 
         private SKU(int itemValue) {
             this.itemValue = itemValue;
+        }
+
+        private SKU (int itemValue, int dealOneValue) {
+            this.itemValue = itemValue;
+            this.dealOneValue = dealOneValue;
         }
 
         private SKU (int itemValue, int dealOneValue, int dealTwoValue) {
@@ -59,12 +65,7 @@ public class CheckoutSolution {
         noOfferSkus.put('J', 60);
         noOfferSkus.put('L', 90);
         noOfferSkus.put('O', 10);
-        noOfferSkus.put('S', 30);
-        noOfferSkus.put('T', 20);
         noOfferSkus.put('W', 20);
-        noOfferSkus.put('X', 90);
-        noOfferSkus.put('Y', 10);
-        noOfferSkus.put('Z', 50);
 
         SKU A = new SKU(50,200,20);
         SKU B = new SKU(30);
@@ -76,10 +77,19 @@ public class CheckoutSolution {
         SKU P = new SKU(50);
         SKU Q = new SKU(30);
         SKU R = new SKU(50);
+        SKU S = new SKU(20,5);
+        SKU T = new SKU(20,5);
         SKU V = new SKU(50, 130,10);
+        SKU X = new SKU(17,2);
+        SKU Y = new SKU(20 ,5);
+        SKU Z = new SKU( 21, 6);
 
-        List<SKU> buy3List = new List<SKU>() {
-        }
+        List<SKU> buy3List = new ArrayList<>();
+        buy3List.add(S);
+        buy3List.add(T);
+        buy3List.add(X);
+        buy3List.add(Y);
+        buy3List.add(Z);
 
 
         int fCount = 0;
@@ -143,6 +153,7 @@ public class CheckoutSolution {
 
 
         }
+        // E and R implications
         getOtherFree(E, 2, B);
         getOtherFree(R, 3, Q);
         // F calculations
@@ -168,6 +179,8 @@ public class CheckoutSolution {
         } else {
             uTotal = 40 * uCount;
         }
+
+        calculateTotal(buy3List);
 
 //        int aTotal = A.dealTotal();
         int bTotal = singleForTotal(B,30 ,15);
@@ -209,5 +222,9 @@ public class CheckoutSolution {
             }
             sku2.reduceItemCount(sku1.itemCount /a);
         }
+    }
+
+    private void calculateTotal (ArrayList list) {
+        
     }
 }
