@@ -31,7 +31,7 @@ public class KTest {
 
     @Test
     public void sixK () {
-        assertThat(checkoutSolution.checkout("KKKKKK"), equalTo(269));
+        assertThat(checkoutSolution.checkout("KKKKKK"), equalTo(360));
     }
 
 
