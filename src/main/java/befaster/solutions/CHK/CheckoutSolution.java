@@ -157,13 +157,13 @@ public class CheckoutSolution {
                     multipleForDeal(V, 3, 2);
                     break;
                 case 'X':
-                    Z.itemCount++;
+                    X.itemCount++;
                     break;
                 case 'Y':
                     Y.itemCount++;
                     break;
                 case 'Z':
-                    X.itemCount++;
+                    Z.itemCount++;
                     break;
                 default:
                     if(noOfferSkus.containsKey(SKU)){
@@ -253,7 +253,7 @@ public class CheckoutSolution {
         List<SKU> skus = list.stream().filter(s -> s.itemCount > 0).collect(Collectors.toList());
         skus.sort(Comparator.comparing(SKU::getItemCount));
         if(skus.size() > 2 ){
-            skus.sort(Comparator.comparing(SKU::getItemCount));
+            skus.sort(Comparator.comparing(SKU::getItemPrice).reversed());
             for(int i=0; i < 3;i++) skus.get(i).dealOneCount = skus.get(0).itemCount;
         }
     }
